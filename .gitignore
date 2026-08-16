@@ -1,0 +1,166 @@
+# =============================================================
+# .gitignore for Academic Portfolio (Static HTML/CSS/JS Site)
+# =============================================================
+
+# -----------------------------------------------
+# OS-Generated Files
+# -----------------------------------------------
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.AppleDouble
+.LSOverride
+Icon?
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# -----------------------------------------------
+# Code Editors & IDEs
+# -----------------------------------------------
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# JetBrains (WebStorm, IntelliJ, etc.)
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim / Neovim
+*.swp
+*.swo
+*~
+Session.vim
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# Notepad++
+nppBackup/
+
+# -----------------------------------------------
+# Local Development Servers & Logs
+# -----------------------------------------------
+
+# npx serve / live-server output
+.cache/
+.parcel-cache/
+
+# Log files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+
+# -----------------------------------------------
+# Node.js (if ever used for tooling)
+# -----------------------------------------------
+node_modules/
+package-lock.json
+yarn.lock
+.npm/
+.pnp
+.pnp.js
+
+# -----------------------------------------------
+# Python (local dev servers / scripts)
+# -----------------------------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+.env
+.venv
+env/
+venv/
+
+# -----------------------------------------------
+# Temporary & Backup Files
+# -----------------------------------------------
+*.tmp
+*.temp
+*.bak
+*.orig
+*.rej
+*.backup
+*_backup.*
+*.old
+
+# -----------------------------------------------
+# Sensitive / Private Files
+# Never commit credentials or personal data
+# -----------------------------------------------
+.env
+.env.local
+.env.*.local
+secrets.json
+credentials.json
+
+# -----------------------------------------------
+# Build / Output Artifacts
+# (not applicable now, but safe to include)
+# -----------------------------------------------
+dist/
+build/
+out/
+.output/
+
+# -----------------------------------------------
+# Archive & Compressed Files
+# -----------------------------------------------
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+
+# -----------------------------------------------
+# Large Binary / Media Files
+# (add exceptions below if needed)
+# -----------------------------------------------
+# Uncomment to ignore all images except your tracked ones:
+# *.png
+# *.jpg
+# *.jpeg
+# *.gif
+# *.webp
+# !images/profile.jpg
+# !images/projects/*.svg
+
+# -----------------------------------------------
+# GitHub-Specific
+# -----------------------------------------------
+# Keep these tracked:
+# !.gitignore
+# !README.md
+# !HOW_TO_CUSTOMIZE.md

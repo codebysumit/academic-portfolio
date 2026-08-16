@@ -1,0 +1,27 @@
+[
+  {
+    "date": "July 2026",
+    "badge": "Paper",
+    "content": "Our paper on *Equivariant Neural Operators for Fluid Dynamics* was accepted at **ICML 2026** (Oral Presentation, top 1.8%)!"
+  },
+  {
+    "date": "May 2026",
+    "badge": "Talk",
+    "content": "Delivered an invited seminar at the **Institute for Pure and Applied Mathematics (IPAM)** at UCLA on *Geometric Deep Learning for PDE Solvers*."
+  },
+  {
+    "date": "March 2026",
+    "badge": "Award",
+    "content": "Awarded the **Outstanding Postdoctoral Research Fellowship** in Artificial Intelligence by the National Science Foundation."
+  },
+  {
+    "date": "January 2026",
+    "badge": "Paper",
+    "content": "New preprint available on arXiv: *Provable Generalization Bounds for Physics-Informed Neural Networks* with Prof. Elena Rostova."
+  },
+  {
+    "date": "November 2025",
+    "badge": "Service",
+    "content": "Serving as Area Chair for **NeurIPS 2025** Machine Learning and the Physical Sciences Workshop."
+  }
+]

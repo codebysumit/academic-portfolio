@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Academic personal website and portfolio.">
+  <title>Academic Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- KaTeX LaTeX Math Styling -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+  <!-- Highlight.js Syntax Theme -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+
+  <!-- Application Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/syntax.css">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="#about" class="site-brand" id="siteBrand">
+        <i class="fa-solid fa-graduation-cap" style="color: var(--primary);"></i>
+        <span>Academic Portfolio</span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <ul class="nav-menu" id="navMenu">
+        <!-- Injected dynamically from content/config.json -->
+      </ul>
+
+      <!-- Header Action Controls -->
+      <div class="header-actions">
+        <button class="icon-btn" id="searchBtn" title="Search website (Press /)" aria-label="Search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+        <button class="icon-btn" id="themeToggleBtn" title="Toggle Dark / Light Mode" aria-label="Toggle Theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <button class="icon-btn mobile-menu-btn" id="mobileMenuBtn" title="Toggle Navigation Menu" aria-label="Toggle Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Grid Wrapper -->
+  <div class="main-wrapper">
+    
+    <!-- Academic Sidebar (Profile, Avatar, Contact, Social) -->
+    <aside class="author-sidebar" id="authorSidebar">
+      <div class="avatar-wrapper">
+        <img src="images/profile.jpg" alt="Author Avatar" id="authorAvatar">
+      </div>
+      
+      <h2 class="author-name" id="authorName">Loading...</h2>
+      <div class="author-title" id="authorTitle"></div>
+      <div class="author-affiliation" id="authorAffiliation"></div>
+      
+      <p class="author-bio-snippet" id="authorBioSnippet"></p>
+
+      <ul class="author-details" id="authorDetails"></ul>
+
+      <div class="social-links" id="socialLinks"></div>
+
+      <a href="#cv" class="sidebar-action-btn">
+        <i class="fa-solid fa-file-lines"></i>
+        <span>Curriculum Vitae</span>
+      </a>
+    </aside>
+
+    <!-- Dynamic Content Area -->
+    <main class="content-area" id="contentArea">
+      <!-- Pages are dynamically rendered here based on URL hash -->
+      <div style="padding: 2rem 0; color: var(--text-muted);">Loading content...</div>
+    </main>
+
+  </div>
+
+  <!-- Minimalist & Professional Copyright Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="copyright-text" id="footerCopyright">
+        &copy; 2026 Academic Portfolio. All rights reserved.
+      </div>
+      <div class="footer-custom-note" id="footerCustomNote" style="display:none;"></div>
+    </div>
+  </footer>
+
+  <!-- BibTeX Citation Modal -->
+  <div class="modal-backdrop" id="bibtexModal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title" id="bibtexModalTitle">BibTeX Citation</div>
+        <button class="modal-close-btn" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <pre class="bibtex-code" id="bibtexModalCode"></pre>
+        <div style="display: flex; justify-content: flex-end; margin-top: 1rem;">
+          <button class="btn-chip primary" id="bibtexCopyBtn">
+            <i class="fa-regular fa-copy"></i> Copy BibTeX
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Global Live Search Modal -->
+  <div class="modal-backdrop" id="searchModal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title"><i class="fa-solid fa-magnifying-glass" style="color: var(--primary); margin-right: 6px;"></i> Quick Search</div>
+        <button class="modal-close-btn" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="search-input-wrap" style="width: 100%;">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="globalSearchInput" class="search-input" placeholder="Type keywords, paper titles, topics, or courses..." autofocus>
+        </div>
+        <div class="search-results-list" id="searchResultsList"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- External Libraries -->
+  <!-- 1. Marked.js for fast Markdown parsing -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.0/marked.min.js"></script>
+  <!-- 2. KaTeX for LaTeX Math Rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <!-- 3. Highlight.js for Syntax Highlighting -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  
+  <!-- Core Application Script -->
+  <script src="js/app.js"></script>
+</body>
+</html>

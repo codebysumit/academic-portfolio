@@ -1,0 +1,20 @@
+[
+  {
+    "slug": "geometric-deep-learning-pdes",
+    "title": "A Geometric Perspective on Neural Operators for Partial Differential Equations",
+    "date": "July 20, 2026",
+    "readTime": "8 min read",
+    "summary": "Exploring how Lie group equivariance and Riemannian metrics enable neural operators to break the curse of dimensionality in scientific machine learning.",
+    "tags": ["Geometric Deep Learning", "PDEs", "LaTeX", "PyTorch"],
+    "file": "content/posts/2026-07-20-geometric-deep-learning.md"
+  },
+  {
+    "slug": "clean-reproducible-research-code",
+    "title": "Best Practices for Writing Clean, Reproducible Academic Code in PyTorch",
+    "date": "November 15, 2025",
+    "readTime": "6 min read",
+    "summary": "A practical guide for PhD students and researchers on structuring machine learning experiments, random seed protocols, and deterministic benchmarks.",
+    "tags": ["Python", "PyTorch", "Reproducibility", "Research Tips"],
+    "file": "content/posts/2025-11-15-writing-clean-academic-code.md"
+  }
+]

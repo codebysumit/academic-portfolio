@@ -1,0 +1,57 @@
+[
+  {
+    "role": "Co-Instructor",
+    "course": "CS 330: Deep Multi-Task and Geometric Learning",
+    "institution": "Stanford University",
+    "term": "Spring 2026",
+    "level": "Graduate Level",
+    "description": "Co-teaching advanced topics in symmetry groups, Lie algebras, equivariant graph neural networks, and PDE neural operators. Responsible for 4 lectures, homework design, and mentoring final research projects.",
+    "links": {
+      "syllabus": "https://stanford.edu",
+      "materials": "https://github.com",
+      "slides": "https://slideshare.com",
+      "coursePage": "https://www.ocw.edu/course-page",
+      "video": "https://youtube.com",
+      "notes": "https://stanford.edu/notes",
+      "castom": "https://castom.com"
+    }
+  },
+  {
+    "role": "Guest Lecturer",
+    "course": "CME 302: Numerical Linear Algebra & Optimization",
+    "institution": "Stanford University",
+    "term": "Fall 2025",
+    "level": "Graduate Level",
+    "description": "Delivered two guest lectures on Riemannian gradient descent, Grassmannian manifold optimization, and stochastic approximation algorithms.",
+    "links": {
+      "slides": "https://speakerdeck.com",
+      "notes": "https://stanford.edu/cme302-notes",
+      "code": "https://github.com/stanford-cme302"
+    }
+  },
+  {
+    "role": "Head Teaching Assistant",
+    "course": "6.867: Machine Learning Theory",
+    "institution": "Massachusetts Institute of Technology (MIT)",
+    "term": "Fall 2023 & Fall 2024",
+    "level": "Graduate Level",
+    "description": "Led weekly recitations for 140+ graduate students, held office hours, authored midterm and final exam questions, and supervised 6 undergraduate teaching assistants.",
+    "links": {
+      "coursePage": "https://mit.edu",
+      "syllabus": "https://ocw.mit.edu/courses/6-867-machine-learning-theory",
+      "materials": "https://github.com/mit-6867"
+    }
+  },
+  {
+    "role": "Teaching Assistant",
+    "course": "18.06: Linear Algebra & Matrix Applications",
+    "institution": "Massachusetts Institute of Technology (MIT)",
+    "term": "Spring 2023",
+    "level": "Undergraduate Level",
+    "description": "Graded problem sets, conducted review sessions on spectral decomposition, singular value decomposition (SVD), and positive definite matrices.",
+    "links": {
+      "coursePage": "https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2023",
+      "notes": "https://math.mit.edu/1806"
+    }
+  }
+]

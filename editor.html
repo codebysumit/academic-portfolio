@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academic Content Studio - Visual Editor for Non-Coders</title>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Highlight.js Syntax Theme -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+  <!-- Highlight.js Core (includes JSON language support) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .admin-container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .admin-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+    .form-label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.4rem;
+    }
+    .form-help {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+    .form-control {
+      width: 100%;
+      padding: 0.6rem 0.85rem;
+      font-size: 0.925rem;
+      font-family: inherit;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      outline: none;
+      transition: var(--transition);
+    }
+    .form-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px var(--primary-subtle);
+    }
+    textarea.form-control {
+      min-height: 100px;
+      resize: vertical;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+    .admin-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.75rem;
+    }
+    .admin-tab-btn {
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      border: 1px solid transparent;
+      background: none;
+      color: var(--text-secondary);
+      cursor: pointer;
+    }
+    .admin-tab-btn.active {
+      background-color: var(--primary-subtle);
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+    .output-box {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      background-color: #0f172a;
+      color: #e2e8f0;
+      padding: 1.25rem;
+      border-radius: var(--radius-md);
+      max-height: 350px;
+      overflow: auto;
+      white-space: pre-wrap;
+      margin-top: 1rem;
+    }
+    .output-box code.hljs {
+      background: transparent;
+      padding: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .btn-chip.copy-json-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .alert-banner {
+      background-color: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-md);
+      margin-bottom: 1.5rem;
+      font-size: 0.925rem;
+      line-height: 1.5;
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+    .section-hint {
+      background: linear-gradient(135deg, var(--primary-subtle, #eff6ff), transparent);
+      border-left: 3px solid var(--primary, #3b82f6);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 0.65rem 1rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .section-hint strong { color: var(--text-primary); }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-container">
+      <a href="index.html" class="site-brand">
+        <i class="fa-solid fa-graduation-cap" style="color: var(--primary);"></i>
+        <span>Academic Website</span>
+      </a>
+      <div class="header-actions">
+        <a href="index.html" class="btn-chip primary"><i class="fa-solid fa-arrow-left"></i> View Live Site</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="admin-container">
+    <div class="page-header" style="margin-bottom: 1.5rem;">
+      <h1 class="page-title"><i class="fa-solid fa-sliders" style="color: var(--primary);"></i> Academic Content Studio</h1>
+      <p class="page-subtitle">A visual, no-coding tool to edit your profile, publications, talks, and settings without touching code syntax!</p>
+    </div>
+
+    <div class="alert-banner">
+      <i class="fa-solid fa-circle-info" style="font-size: 1.2rem; margin-top: 2px;"></i>
+      <div>
+        <strong>How to use this Studio:</strong>
+        Fill in the forms below. Whenever you make changes, click <strong>"Export &amp; Download File"</strong> or copy the generated text and save it into your <code>content/</code> folder (e.g. <code>content/config.json</code>).
+      </div>
+    </div>
+
+    <div class="admin-nav">
+      <button class="admin-tab-btn active" data-tab="configTab"><i class="fa-solid fa-user-gear"></i> Profile &amp; Settings (config.json)</button>
+      <button class="admin-tab-btn" data-tab="pubTab"><i class="fa-solid fa-book-open"></i> Add Publication (publications.json)</button>
+      <button class="admin-tab-btn" data-tab="talkTab"><i class="fa-solid fa-person-chalkboard"></i> Add Talk (talks.json)</button>
+      <button class="admin-tab-btn" data-tab="teachTab"><i class="fa-solid fa-chalkboard-user"></i> Add Teaching (teaching.json)</button>
+      <button class="admin-tab-btn" data-tab="portTab"><i class="fa-solid fa-laptop-code"></i> Add Portfolio (portfolio.json)</button>
+      <button class="admin-tab-btn" data-tab="blogTab"><i class="fa-solid fa-pen-nib"></i> Add Blog Post (posts.json)</button>
+      <button class="admin-tab-btn" data-tab="newsTab"><i class="fa-solid fa-bullhorn"></i> Recent News &amp; Updates (news.json)</button>
+      <button class="admin-tab-btn" data-tab="cvTab"><i class="fa-solid fa-file-lines"></i> Curriculum Vitae (cv.json)</button>
+    </div>
+
+    <!-- Profile / Config Form -->
+    <div id="configTab" class="admin-tab-content">
+      <div class="admin-card">
+        <div class="section-hint">
+          <strong>Profile &amp; Settings</strong> — Fill in your name, photo, and bio. These appear in the sidebar on every page. Export and save the result as <code>content/config.json</code>.
+        </div>
+        <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-primary);">
+          1. Personal Information &amp; Affiliation
+        </h2>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Full Name &amp; Degree</label>
+            <input type="text" id="cfg_name" class="form-control" placeholder="e.g. Alex Morgan, Ph.D.">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Academic Title / Role</label>
+            <input type="text" id="cfg_title" class="form-control" placeholder="e.g. Postdoctoral Researcher">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Department / Lab</label>
+            <input type="text" id="cfg_department" class="form-control" placeholder="e.g. Department of Computer Science">
+          </div>
+          <div class="form-group">
+            <label class="form-label">University / Institution</label>
+            <input type="text" id="cfg_institution" class="form-control" placeholder="e.g. Stanford University">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Location (City, Country)</label>
+            <input type="text" id="cfg_location" class="form-control" placeholder="e.g. Stanford, CA, USA">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input type="email" id="cfg_email" class="form-control" placeholder="e.g. alex.morgan@stanford.edu">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Phone / Contact Number</label>
+            <input type="tel" id="cfg_phone" class="form-control" placeholder="e.g. +1 (650) 000-0000">
+            <div class="form-help">Shown in the sidebar and CV print header. Leave empty to hide.</div>
+          </div>
+          <div class="form-group">
+            <!-- spacer -->
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Profile Photo Path</label>
+          <input type="text" id="cfg_avatar" class="form-control" value="images/profile.jpg">
+          <div class="form-help">Put your photo in the <code>images/</code> folder and type the filename here.</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Short Bio Snippet (Sidebar)</label>
+          <textarea id="cfg_bio" class="form-control" placeholder="Brief 2-3 sentence overview of your research focus."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Research Interests (Comma separated)</label>
+          <input type="text" id="cfg_interests" class="form-control" placeholder="Deep Learning Theory, Optimization, Partial Differential Equations">
+        </div>
+
+        <h2 style="font-size: 1.25rem; font-weight: 700; margin: 1.75rem 0 1.25rem; color: var(--text-primary); border-top: 1px solid var(--border-color); padding-top: 1.25rem;">
+          2. Social &amp; Academic Links
+        </h2>
+        <div class="form-help" style="margin-bottom: 1rem;">Leave any box empty if you do not want that link on your site.</div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Google Scholar URL</label>
+            <input type="url" id="cfg_social_scholar" class="form-control" placeholder="https://scholar.google.com/citations?user=...">
+          </div>
+          <div class="form-group">
+            <label class="form-label">ORCID URL</label>
+            <input type="url" id="cfg_social_orcid" class="form-control" placeholder="https://orcid.org/0000-0002-1825-0097">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">GitHub URL</label>
+            <input type="url" id="cfg_social_github" class="form-control" placeholder="https://github.com/yourusername">
+          </div>
+          <div class="form-group">
+            <label class="form-label">arXiv Profile URL</label>
+            <input type="url" id="cfg_social_arxiv" class="form-control" placeholder="https://arxiv.org/a/yourname_a_1">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">LinkedIn URL</label>
+            <input type="url" id="cfg_social_linkedin" class="form-control" placeholder="https://linkedin.com/in/yourusername">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Twitter / X URL</label>
+            <input type="url" id="cfg_social_twitter" class="form-control" placeholder="https://twitter.com/yourhandle">
+          </div>
+        </div>
+
+        <h2 style="font-size: 1.25rem; font-weight: 700; margin: 1.75rem 0 1.25rem; color: var(--text-primary); border-top: 1px solid var(--border-color); padding-top: 1.25rem;">
+          3. Website Menu (Navigation)
+        </h2>
+        <div class="form-help" style="margin-bottom: 1rem;">Tick a box to show that page in your menu. Untick to hide it. You can also rename the label.</div>
+
+        <div id="navFieldsContainer">
+          <div class="form-row" style="align-items: end; grid-template-columns: auto 1fr;">
+            <div class="form-group" style="margin-bottom: 0.6rem;">
+              <label class="form-label"><input type="checkbox" id="nav_enable_about" checked> About</label>
+            </div>
+            <div class="form-group" style="margin-bottom: 0.6rem;">
+              <input type="text" id="nav_title_about" class="form-control" value="About">
+            </div>
+          </div>
+          <div class="form-row" style="align-items: end; grid-template-columns: auto 1fr;">
+            <div class="form-group" style="margin-bottom: 0.6rem;">
+              <label class="form-label"><input type="checkbox" id="nav_enable_publications" checked> Publications</label>
+            </div>
+            <div class="form-group" style="margin-bottom: 0.6rem;">
+              <input type="text" id="nav_title_publications" class="form-control" value="Publications">
+            </div>
+          </div>
+          <div class="form-row" style="align-items: end; grid-template-columns: auto 1fr;">
+            <div class="form-group" style="margin-bottom: 0.6rem;">
+              <label class="form-label"><input type="checkbox" id="nav_enable_talks" checked> Talks</label>
+            </div>
+            <div class="form-group" style="margin-bottom: 0.6rem;">
+              <input type="text" id="nav_title_talks" class="form-control" value="Talks">
+            </div>
+          </div>
+          <div class="form-row" style="align-items: end; grid-template-columns: auto 1fr;">
+            <div class="form-group" style="margin-bottom: 0.6rem;">
+              <label class="form-label"><input type="checkbox" id="nav_enable_teaching" checked> Teaching</label>
+            </div>
+            <div class="form-group" style="margin-bottom: 0.6rem;">
+              <input type="text" id="nav_title_teaching" class="form-control" value="Teaching">
+            </div>
+          </div>
+          <div class="form-row" style="align-items: end; grid-template-columns: auto 1fr;">
+            <div class="form-group" style="margin-bottom: 0.6rem;">
+              <label class="form-label"><input type="checkbox" id="nav_enable_portfolio" checked> Portfolio</label>
+            </div>
+            <div class="form-group" style="margin-bottom: 0.6rem;">
+              <input type="text" id="nav_title_portfolio" class="form-control" value="Portfolio">
+            </div>
+          </div>
+          <div class="form-row" style="align-items: end; grid-template-columns: auto 1fr;">
+            <div class="form-group" style="margin-bottom: 0.6rem;">
+              <label class="form-label"><input type="checkbox" id="nav_enable_blog" checked> Blog</label>
+            </div>
+            <div class="form-group" style="margin-bottom: 0.6rem;">
+              <input type="text" id="nav_title_blog" class="form-control" value="Blog">
+            </div>
+          </div>
+          <div class="form-row" style="align-items: end; grid-template-columns: auto 1fr;">
+            <div class="form-group" style="margin-bottom: 0.6rem;">
+              <label class="form-label"><input type="checkbox" id="nav_enable_cv" checked> CV</label>
+            </div>
+            <div class="form-group" style="margin-bottom: 0.6rem;">
+              <input type="text" id="nav_title_cv" class="form-control" value="CV">
+            </div>
+          </div>
+        </div>
+
+        <h2 style="font-size: 1.25rem; font-weight: 700; margin: 1.75rem 0 1.25rem; color: var(--text-primary); border-top: 1px solid var(--border-color); padding-top: 1.25rem;">
+          4. Site Features
+        </h2>
+        <div class="form-help" style="margin-bottom: 1rem;">Tick to turn a feature on. Untick to turn it off.</div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label"><input type="checkbox" id="feat_mathjax" checked> Math Equations (MathJax / KaTeX)</label>
+          </div>
+          <div class="form-group">
+            <label class="form-label"><input type="checkbox" id="feat_codehighlight" checked> Code Highlighting</label>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label"><input type="checkbox" id="feat_codecopy" checked> Code Copy Button</label>
+          </div>
+          <div class="form-group">
+            <label class="form-label"><input type="checkbox" id="feat_darkmode" checked> Dark Mode</label>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label"><input type="checkbox" id="feat_search" checked> Global Search</label>
+          </div>
+          <div class="form-group">
+            <label class="form-label"><input type="checkbox" id="feat_bibtex" checked> BibTeX Modal</label>
+          </div>
+        </div>
+
+        <h2 style="font-size: 1.25rem; font-weight: 700; margin: 1.75rem 0 1.25rem; color: var(--text-primary); border-top: 1px solid var(--border-color); padding-top: 1.25rem;">
+          5. Minimalist Copyright Footer
+        </h2>
+
+        <div class="form-group">
+          <label class="form-label"><input type="checkbox" id="feat_showcopyright" checked> Show Copyright Footer</label>
+          <div class="form-help">Untick to completely hide the copyright footer from your site.</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Copyright Text</label>
+          <input type="text" id="cfg_copyright" class="form-control" placeholder="© 2026 Alex Morgan. All rights reserved.">
+          <div class="form-help">Clean &amp; professional footer statement showing only your copyright.</div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Extra Footer Note (Optional)</label>
+          <input type="text" id="cfg_customnote" class="form-control" placeholder="e.g. Built with love in Kolkata">
+          <div class="form-help">A small extra line shown under the copyright. Leave empty for none.</div>
+        </div>
+
+        <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
+          <button id="btnGenerateConfig" class="btn-chip primary" style="padding: 0.6rem 1.25rem; font-size: 0.95rem;">
+            <i class="fa-solid fa-bolt"></i> Generate Updated config.json
+          </button>
+          <button id="btnDownloadConfig" class="btn-chip" style="padding: 0.6rem 1.25rem; font-size: 0.95rem;">
+            <i class="fa-solid fa-download"></i> Download config.json
+          </button>
+          <button type="button" class="btn-chip copy-json-btn" data-copy-target="configOutputBox" style="padding: 0.6rem 1.25rem; font-size: 0.95rem;">
+            <i class="fa-regular fa-copy"></i> Copy JSON
+          </button>
+        </div>
+
+        <div class="output-box" id="configOutputBox"><code class="language-json">// Generated config.json will appear here...</code></div>
+      </div>
+    </div>
+
+    <!-- Publication Form -->
+    <div id="pubTab" class="admin-tab-content" style="display: none;">
+      <div class="admin-card">
+        <div class="section-hint">
+          <strong>Required:</strong> Title, Authors, Year, and at least one Link. Fill in the form, click <strong>"Add This Publication"</strong>, then export the full list.
+        </div>
+        <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-primary);">
+          Add / Edit a Publication
+        </h2>
+
+        <div class="form-group">
+          <label class="form-label">Paper Title</label>
+          <input type="text" id="pub_title" class="form-control" placeholder="e.g. Equivariant Neural Operators for Fluid Dynamics">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Authors (Comma separated)</label>
+            <input type="text" id="pub_authors" class="form-control" placeholder="Alex Morgan, Elena Rostova, Marcus Vance">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Publication Type</label>
+            <select id="pub_type" class="form-control">
+              <option value="Conference">Conference</option>
+              <option value="Journal">Journal</option>
+              <option value="Preprint">Preprint / arXiv</option>
+              <option value="Workshop">Workshop</option>
+              <option value="Book Chapter">Book Chapter</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Conference / Journal Venue</label>
+            <input type="text" id="pub_venue" class="form-control" placeholder="e.g. International Conference on Machine Learning (ICML)">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Year</label>
+            <input type="number" id="pub_year" class="form-control" value="2026">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Badge / Award (Optional)</label>
+            <input type="text" id="pub_badge" class="form-control" placeholder="e.g. Oral Presentation (Top 1.8%) or Spotlight">
+          </div>
+          <div class="form-group" style="display: flex; align-items: flex-end;">
+            <label class="form-label" style="margin-bottom: 0;"><input type="checkbox" id="pub_selected"> Show as a Selected / Featured Publication</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Abstract (Supports LaTeX math like $E=mc^2$)</label>
+          <textarea id="pub_abstract" class="form-control" placeholder="Paste the paper abstract here..."></textarea>
+        </div>
+
+        <h2 style="font-size: 1.1rem; font-weight: 700; margin: 1.5rem 0 1rem; color: var(--text-primary); border-top: 1px solid var(--border-color); padding-top: 1.25rem;">
+          Links (PDF, arXiv, Code, Project, Video, etc.)
+        </h2>
+        <div class="form-help" style="margin-bottom: 0.75rem;">Pick a link type, paste the URL, click "Add Link". Repeat for as many links as this paper has.</div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Link Type</label>
+            <select id="pub_link_type" class="form-control">
+              <option value="pdf">PDF</option>
+              <option value="arxiv">arXiv</option>
+              <option value="code">Code / GitHub</option>
+              <option value="paper">Related Paper</option>
+              <option value="project">Project Page</option>
+              <option value="video">Video</option>
+              <option value="poster">Poster</option>
+              <option value="slides">Slides</option>
+              <option value="doi">DOI</option>
+              <option value="dataset">Dataset / Data</option>
+              <option value="website">Website</option>
+              <option value="demo">Demo</option>
+              <option value="docs">Docs</option>
+              <option value="other">Other (custom name)</option>
+            </select>
+          </div>
+          <div class="form-group" id="pub_link_customkey_wrap" style="display: none;">
+            <label class="form-label">Custom Link Name</label>
+            <input type="text" id="pub_link_customkey" class="form-control" placeholder="e.g. supplementary">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">URL</label>
+            <input type="url" id="pub_link_url" class="form-control" placeholder="https://...">
+          </div>
+          <div class="form-group" style="display: flex; align-items: flex-end; gap: 0.5rem;">
+            <button id="btnAddPubLink" type="button" class="btn-chip" style="padding: 0.6rem 1.25rem; font-size: 0.95rem; flex: 1;">
+              <i class="fa-solid fa-link"></i> Add Link
+            </button>
+            <button id="btnCancelPubLinkEdit" type="button" class="btn-chip" style="padding: 0.6rem 1.25rem; font-size: 0.95rem; display: none;">
+              Cancel
+            </button>
+          </div>
+        </div>
+
+        <div class="form-help" style="margin-bottom: 0.5rem;">Click a link chip below to edit its URL, or click the &times; to remove it.</div>
+        <div id="pubLinksChips" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;"></div>
+
+        <div class="form-group">
+          <label class="form-label">BibTeX Citation</label>
+          <textarea id="pub_bibtex" class="form-control" placeholder="@inproceedings{...}"></textarea>
+        </div>
+
+        <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
+          <button id="btnGeneratePub" class="btn-chip primary" style="padding: 0.6rem 1.25rem; font-size: 0.95rem;">
+            <i class="fa-solid fa-plus"></i> Add This Publication
+          </button>
+          <button id="btnCancelPubEdit" type="button" class="btn-chip" style="padding: 0.6rem 1.25rem; font-size: 0.95rem; display: none;">
+            Cancel Edit
+          </button>
+        </div>
+
+        <h2 style="font-size: 1.1rem; font-weight: 700; margin: 1.75rem 0 1rem; color: var(--text-primary); border-top: 1px solid var(--border-color); padding-top: 1.25rem;">
+          Publications So Far
+        </h2>
+        <div id="pubPreviewList" class="form-help" style="line-height: 1.8;">// Publications you add will be listed here...</div>
+
+        <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
+          <button id="btnGeneratePubJson" class="btn-chip primary" style="padding: 0.6rem 1.25rem; font-size: 0.95rem;">
+            <i class="fa-solid fa-bolt"></i> Generate Full publications.json
+          </button>
+          <button id="btnDownloadPub" class="btn-chip" style="padding: 0.6rem 1.25rem; font-size: 0.95rem;">
+            <i class="fa-solid fa-download"></i> Download publications.json
+          </button>
+          <button type="button" class="btn-chip copy-json-btn" data-copy-target="pubOutputBox" style="padding: 0.6rem 1.25rem; font-size: 0.95rem;">
+            <i class="fa-regular fa-copy"></i> Copy JSON
+          </button>
+        </div>
+
+        <div class="output-box" id="pubOutputBox"><code class="language-json">// Generated publications.json will appear here...</code></div>
+      </div>
+    </div>
+
+    <!-- Talks Form -->
+    <div id="talkTab" class="admin-tab-content" style="display: none;">
+      <div class="admin-card">
+        <div class="section-hint">
+          <strong>Required:</strong> Title and Event Name. Add Slides or Video links so visitors can access your materials.
+        </div>
+        <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-primary);">
+          Add / Edit a Presentation / Talk
+        </h2>
+
+        <div class="form-group">
+          <label class="form-label">Talk Title</label>
+          <input type="text" id="talk_title" class="form-control" placeholder="e.g. Geometric Deep Learning for PDEs">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Event / Conference Name</label>
+            <input type="text" id="talk_event" class="form-control" placeholder="e.g. UCLA IPAM Workshop">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Talk Type</label>
+            <input type="text" id="talk_type" class="form-control" placeholder="e.g. Invited Seminar, Keynote, Oral">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Date</label>
+            <input type="text" id="talk_date" class="form-control" placeholder="e.g. May 18, 2026">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Location</label>
+            <input type="text" id="talk_location" class="form-control" placeholder="e.g. Los Angeles, CA">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Description</label>
+          <textarea id="talk_desc" class="form-control" placeholder="Short summary of the talk."></textarea>
+        </div>
+
+        <h2 style="font-size: 1.1rem; font-weight: 700; margin: 1.5rem 0 1rem; color: var(--text-primary); border-top: 1px solid var(--border-color); padding-top: 1.25rem;">
+          Links (Slides, Video, Event Page, etc.)
+        </h2>
+        <div class="form-help" style="margin-bottom: 0.75rem;">Pick a link type, paste the URL, click "Add Link". Repeat for as many links as this talk has.</div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Link Type</label>
+            <select id="talk_link_type" class="form-control">
+              <option value="slides">Slides</option>
+              <option value="video">Video / Recording</option>
+              <option value="event">Event Page</option>
+              <option value="paper">Related Paper</option>
+              <option value="code">Code / GitHub</option>
+              <option value="poster">Poster</option>
+              <option value="pdf">PDF</option>
+              <option value="arxiv">arXiv</option>
+              <option value="project">Project Page</option>
+              <option value="doi">DOI</option>
+              <option value="dataset">Dataset / Data</option>
+              <option value="website">Website</option>
+              <option value="demo">Demo</option>
+              <option value="other">Other (custom name)</option>
+            </select>
+          </div>
+          <div class="form-group" id="talk_link_customkey_wrap" style="display: none;">
+            <label class="form-label">Custom Link Name</label>
+            <input type="text" id="talk_link_customkey" class="form-control" placeholder="e.g. photos">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">URL (or #publications for an in-page link)</label>
+            <input type="text" id="talk_link_url" class="form-control" placeholder="https://... or #publications">
+          </div>
+          <div class="form-group" style="display: flex; align-items: flex-end; gap: 0.5rem;">
+            <button id="btnAddTalkLink" type="button" class="btn-chip" style="padding: 0.6rem 1.25rem; font-size: 0.95rem; flex: 1;">
+              <i class="fa-solid fa-link"></i> Add Link
+            </button>
+            <button id="btnCancelTalkLinkEdit" type="button" class="btn-chip" style="padding: 0.6rem 1.25rem; font-size: 0.95rem; display: none;">
+              Cancel
+            </button>
+          </div>
+        </div>
+
+        <div class="form-help" style="margin-bottom: 0.5rem;">Click a link chip below to edit its URL, or click the &times; to remove it.</div>
+        <div id="talkLinksChips" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;"></div>
+
+        <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
+          <button id="btnGenerateTalk" class="btn-chip primary" style="padding: 0.6rem 1.25rem; font-size: 0.95rem;">
+            <i class="fa-solid fa-plus"></i> Add This Talk
+          </button>
+          <button id="btnCancelTalkEdit" type="button" class="btn-chip" style="padding: 0.6rem 1.25rem; font-size: 0.95rem; display: none;">
+            Cancel Edit
+          </button>
+        </div>
+
+        <h2 style="font-size: 1.1rem; font-weight: 700; margin: 1.75rem 0 1rem; color: var(--text-primary); border-top: 1px solid var(--border-color); padding-top: 1.25rem;">
+          Talks So Far
+        </h2>
+        <div id="talkPreviewList" class="form-help" style="line-height: 1.8;">// Talks you add will be listed here...</div>
+
+        <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
+          <button id="btnGenerateTalkJson" class="btn-chip primary" style="padding: 0.6rem 1.25rem; font-size: 0.95rem;">
+            <i class="fa-solid fa-bolt"></i> Generate Full talks.json
+          </button>
+          <button id="btnDownloadTalk" class="btn-chip" style="padding: 0.6rem 1.25rem; font-size: 0.95rem;">
+            <i class="fa-solid fa-download"></i> Download talks.json
+          </button>
+          <button type="button" class="btn-chip copy-json-btn" data-copy-target="talkOutputBox" style="padding: 0.6rem 1.25rem; font-size: 0.95rem;">
+            <i class="fa-regular fa-copy"></i> Copy JSON
+          </button>
+        </div>
+
+        <div class="output-box" id="talkOutputBox"><code class="language-json">// Generated talks.json will appear here...</code></div>
+      </div>
+    </div>
+
+    <!-- Teaching Form -->
+    <div id="teachTab" class="admin-tab-content" style="display: none;">
+      <div class="admin-card">
+        <div class="section-hint">
+          <strong>Required:</strong> Your Role and Course Name. Links like Syllabus or Course Page are optional but recommended.
+        </div>
+        <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-primary);">
+          Add / Edit a Teaching Entry
+        </h2>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Your Role</label>
+            <input type="text" id="teach_role" class="form-control" placeholder="e.g. Co-Instructor, Guest Lecturer, Teaching Assistant">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Level</label>
+            <select id="teach_level" class="form-control">
+              <option value="Graduate Level">Graduate Level</option>
+              <option value="Undergraduate Level">Undergraduate Level</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Course Name / Number</label>
+          <input type="text" id="teach_course" class="form-control" placeholder="e.g. CS 330: Deep Multi-Task and Geometric Learning">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Institution</label>
+            <input type="text" id="teach_institution" class="form-control" placeholder="e.g. Stanford University">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Term</label>
+            <input type="text" id="teach_term" class="form-control" placeholder="e.g. Spring 2026">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Description</label>
+          <textarea id="teach_desc" class="form-control" placeholder="What you taught, responsibilities, class size, etc."></textarea>
+        </div>
+
+        <h2 style="font-size: 1.1rem; font-weight: 700; margin: 1.5rem 0 1rem; color: var(--text-primary); border-top: 1px solid var(--border-color); padding-top: 1.25rem;">
+          Links (Syllabus, Materials, Slides, etc.)
+        </h2>
+        <div class="form-help" style="margin-bottom: 0.75rem;">Pick a link type, paste the URL, click "Add Link". Repeat for as many links as this course has. Leave all empty if there are none, like an old TA role.</div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Link Type</label>
+            <select id="teach_link_type" class="form-control">
+              <option value="syllabus">Syllabus</option>
+              <option value="materials">Course Materials</option>
+              <option value="slides">Slides</option>
+              <option value="coursePage">Course Page / Website</option>
+              <option value="code">Code / GitHub</option>
+              <option value="video">Video / Recordings</option>
+              <option value="notes">Lecture Notes</option>
+              <option value="pdf">PDF</option>
+              <option value="assignment">Assignments / Homework</option>
+              <option value="website">Website</option>
+              <option value="other">Other (custom name)</option>
+            </select>
+          </div>
+          <div class="form-group" id="teach_link_customkey_wrap" style="display: none;">
+            <label class="form-label">Custom Link Name</label>
+            <input type="text" id="teach_link_customkey" class="form-control" placeholder="e.g. recordings">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">URL</label>
+            <input type="url" id="teach_link_url" class="form-control" placeholder="https://...">
+          </div>
+          <div class="form-group" style="display: flex; align-items: flex-end; gap: 0.5rem;">
+            <button id="btnAddTeachLink" type="button" class="btn-chip" style="padding: 0.6rem 1.25rem; font-size: 0.95rem; flex: 1;">
+              <i class="fa-solid fa-link"></i> Add Link
+            </button>
+            <button id="btnCancelTeachLinkEdit" type="button" class="btn-chip" style="padding: 0.6rem 1.25rem; font-size: 0.95rem; display: none;">
+              Cancel
+            </button>
+          </div>
+        </div>
+
+        <div class="form-help" style="margin-bottom: 0.5rem;">Click a link chip below to edit its URL, or click the &times; to remove it.</div>
+        <div id="teachLinksChips" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;"></div>
+
+        <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
+          <button id="btnGenerateTeach" class="btn-chip primary" style="padding: 0.6rem 1.25rem; font-size: 0.95rem;">
+            <i class="fa-solid fa-plus"></i> Add This Teaching Entry
+          </button>
+          <button id="btnCancelTeachEdit" type="button" class="btn-chip" style="padding: 0.6rem 1.25rem; font-size: 0.95rem; display: none;">
+            Cancel Edit
+          </button>
+        </div>
+
+        <h2 style="font-size: 1.1rem; font-weight: 700; margin: 1.75rem 0 1rem; color: var(--text-primary); border-top: 1px solid var(--border-color); padding-top: 1.25rem;">
+          Teaching So Far
+        </h2>
+        <div id="teachPreviewList" class="form-help" style="line-height: 1.8;">// Teaching entries you add will be listed here...</div>
+
+        <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
+          <button id="btnGenerateTeachJson" class="btn-chip primary" style="padding: 0.6rem 1.25rem; font-size: 0.95rem;">
+            <i class="fa-solid fa-bolt"></i> Generate Full teaching.json
+          </button>
+          <button id="btnDownloadTeach" class="btn-chip" style="padding: 0.6rem 1.25rem; font-size: 0.95rem;">
+            <i class="fa-solid fa-download"></i> Download teaching.json
+          </button>
+          <button type="button" class="btn-chip copy-json-btn" data-copy-target="teachOutputBox" style="padding: 0.6rem 1.25rem; font-size: 0.95rem;">
+            <i class="fa-regular fa-copy"></i> Copy JSON
+          </button>
+        </div>
+
+        <div class="output-box" id="teachOutputBox"><code class="language-json">// Generated teaching.json will appear here...</code></div>
+      </div>
+    </div>
+
+    <!-- Portfolio Form -->
+    <div id="portTab" class="admin-tab-content" style="display: none;">
+      <div class="admin-card">
+        <div class="section-hint">
+          <strong>Required:</strong> Project Title and Description. Add a GitHub or Demo link so people can explore the project.
+        </div>
+        <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-primary);">
+          Add / Edit a Portfolio Project
+        </h2>
+
+        <div class="form-group">
+          <label class="form-label">Project Title</label>
+          <input type="text" id="port_title" class="form-control" placeholder="e.g. GeomTorch: Geometric Deep Learning & Lie Group Equivariance in PyTorch">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Subtitle</label>
+            <input type="text" id="port_subtitle" class="form-control" placeholder="e.g. Open-Source Research Framework">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Category</label>
+            <input type="text" id="port_category" class="form-control" placeholder="e.g. Open Source Software, Research Tool, Datasets & Benchmarks" list="port_category_list">
+            <datalist id="port_category_list">
+              <option value="Open Source Software">
+              <option value="Research Tool">
+              <option value="Datasets & Benchmarks">
+              <option value="Web Application">
+              <option value="Mobile Application">
+            </datalist>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Date / Period</label>
+            <input type="text" id="port_date" class="form-control" placeholder="e.g. 2024 - Present">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Project Image Path</label>
+            <input type="text" id="port_image" class="form-control" placeholder="e.g. images/projects/myproject.svg">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Description</label>
+          <textarea id="port_description" class="form-control" placeholder="A short paragraph describing what the project is and does."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Tags / Tech Stack (Comma separated)</label>
+          <input type="text" id="port_tags" class="form-control" placeholder="PyTorch, Geometric Deep Learning, CUDA, C++, Lie Groups">
+        </div>
+
+        <h2 style="font-size: 1.1rem; font-weight: 700; margin: 1.5rem 0 1rem; color: var(--text-primary); border-top: 1px solid var(--border-color); padding-top: 1.25rem;">
+          Links (GitHub, Docs, Demo, Paper, Dataset, etc.)
+        </h2>
+        <div class="form-help" style="margin-bottom: 0.75rem;">Pick a link type, paste the URL, click "Add Link". Repeat for as many links as this project has.</div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Link Type</label>
+            <select id="port_link_type" class="form-control">
+              <option value="github">GitHub / Code</option>
+              <option value="docs">Documentation / Docs</option>
+              <option value="demo">Live Demo</option>
+              <option value="paper">Related Paper</option>
+              <option value="dataset">Dataset / Data</option>
+              <option value="website">Website</option>
+              <option value="video">Video</option>
+              <option value="slides">Slides</option>
+              <option value="poster">Poster</option>
+              <option value="pdf">PDF</option>
+              <option value="arxiv">arXiv</option>
+              <option value="other">Other (custom name)</option>
+            </select>
+          </div>
+          <div class="form-group" id="port_link_customkey_wrap" style="display: none;">
+            <label class="form-label">Custom Link Name</label>
+            <input type="text" id="port_link_customkey" class="form-control" placeholder="e.g. changelog">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">URL (or #publications for an in-page link)</label>
+            <input type="text" id="port_link_url" class="form-control" placeholder="https://... or #publications">
+          </div>
+          <div class="form-group" style="display: flex; align-items: flex-end; gap: 0.5rem;">
+            <button id="btnAddPortLink" type="button" class="btn-chip" style="padding: 0.6rem 1.25rem; font-size: 0.95rem; flex: 1;">
+              <i class="fa-solid fa-link"></i> Add Link
+            </button>
+            <button id="btnCancelPortLinkEdit" type="button" class="btn-chip" style="padding: 0.6rem 1.25rem; font-size: 0.95rem; display: none;">
+              Cancel
+            </button>
+          </div>
+        </div>
+
+        <div class="form-help" style="margin-bottom: 0.5rem;">Click a link chip below to edit its URL, or click the &times; to remove it.</div>
+
+        <div id="portLinksChips" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;"></div>
+
+        <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
+          <button id="btnGeneratePort" class="btn-chip primary" style="padding: 0.6rem 1.25rem; font-size: 0.95rem;">
+            <i class="fa-solid fa-plus"></i> Add This Project
+          </button>
+          <button id="btnCancelPortEdit" type="button" class="btn-chip" style="padding: 0.6rem 1.25rem; font-size: 0.95rem; display: none;">
+            Cancel Edit
+          </button>
+        </div>
+
+        <h2 style="font-size: 1.1rem; font-weight: 700; margin: 1.75rem 0 1rem; color: var(--text-primary); border-top: 1px solid var(--border-color); padding-top: 1.25rem;">
+          Portfolio So Far
+        </h2>
+        <div id="portPreviewList" class="form-help" style="line-height: 1.8;">// Projects you add will be listed here...</div>
+
+        <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
+          <button id="btnGeneratePortJson" class="btn-chip primary" style="padding: 0.6rem 1.25rem; font-size: 0.95rem;">
+            <i class="fa-solid fa-bolt"></i> Generate Full portfolio.json
+          </button>
+          <button id="btnDownloadPort" class="btn-chip" style="padding: 0.6rem 1.25rem; font-size: 0.95rem;">
+            <i class="fa-solid fa-download"></i> Download portfolio.json
+          </button>
+          <button type="button" class="btn-chip copy-json-btn" data-copy-target="portOutputBox" style="padding: 0.6rem 1.25rem; font-size: 0.95rem;">
+            <i class="fa-regular fa-copy"></i> Copy JSON
+          </button>
+        </div>
+
+        <div class="output-box" id="portOutputBox"><code class="language-json">// Generated portfolio.json will appear here...</code></div>
+      </div>
+    </div>
+
+    <!-- Blog Form -->
+    <div id="blogTab" class="admin-tab-content" style="display: none;">
+      <div class="admin-card">
+        <div class="section-hint">
+          <strong>Required:</strong> Title, Date, and Markdown File Path. Write your post as a <code>.md</code> file in <code>content/posts/</code>, then link it here.
+        </div>
+        <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-primary);">
+          Add / Edit a Blog Post
+        </h2>
+
+        <div class="form-group">
+          <label class="form-label">Post Title</label>
+          <input type="text" id="blog_title" class="form-control" placeholder="e.g. A Geometric Perspective on Neural Operators for PDEs">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Date</label>
+            <input type="text" id="blog_date" class="form-control" placeholder="e.g. July 20, 2026">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Read Time</label>
+            <input type="text" id="blog_readtime" class="form-control" placeholder="e.g. 8 min read">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Summary</label>
+          <textarea id="blog_summary" class="form-control" placeholder="A short 1-2 sentence teaser shown on the blog listing page."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Tags (Comma separated)</label>
+          <input type="text" id="blog_tags" class="form-control" placeholder="Geometric Deep Learning, PDEs, LaTeX, PyTorch">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Markdown File Path</label>
+          <input type="text" id="blog_file" class="form-control" placeholder="content/posts/2026-07-20-my-post.md">
+          <div class="form-help">Write your full post as a <code>.md</code> file and put it in the <code>content/posts/</code> folder, then type its path here. This studio does not edit the post body itself.</div>
+        </div>
+
+        <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
+          <button id="btnGenerateBlog" class="btn-chip primary" style="padding: 0.6rem 1.25rem; font-size: 0.95rem;">
+            <i class="fa-solid fa-plus"></i> Add This Post
+          </button>
+          <button id="btnCancelBlogEdit" type="button" class="btn-chip" style="padding: 0.6rem 1.25rem; font-size: 0.95rem; display: none;">
+            Cancel Edit
+          </button>
+        </div>
+
+        <h2 style="font-size: 1.1rem; font-weight: 700; margin: 1.75rem 0 1rem; color: var(--text-primary); border-top: 1px solid var(--border-color); padding-top: 1.25rem;">
+          Blog Posts So Far
+        </h2>
+        <div id="blogPreviewList" class="form-help" style="line-height: 1.8;">// Posts you add will be listed here...</div>
+
+        <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
+          <button id="btnGenerateBlogJson" class="btn-chip primary" style="padding: 0.6rem 1.25rem; font-size: 0.95rem;">
+            <i class="fa-solid fa-bolt"></i> Generate Full posts.json
+          </button>
+          <button id="btnDownloadBlog" class="btn-chip" style="padding: 0.6rem 1.25rem; font-size: 0.95rem;">
+            <i class="fa-solid fa-download"></i> Download posts.json
+          </button>
+          <button type="button" class="btn-chip copy-json-btn" data-copy-target="blogOutputBox" style="padding: 0.6rem 1.25rem; font-size: 0.95rem;">
+            <i class="fa-regular fa-copy"></i> Copy JSON
+          </button>
+        </div>
+
+        <div class="output-box" id="blogOutputBox"><code class="language-json">// Generated posts.json will appear here...</code></div>
+      </div>
+    </div>
+
+    <!-- News Form -->
+    <div id="newsTab" class="admin-tab-content" style="display: none;">
+      <div class="admin-card">
+        <div class="section-hint">
+          <strong>Required:</strong> Date and Content. Use <code>**bold**</code> for emphasis. A Badge like "Paper" or "Award" is optional but helps categorize items.
+        </div>
+        <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-primary);">
+          Add / Edit a News &amp; Updates Item
+        </h2>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Date</label>
+            <input type="text" id="news_date" class="form-control" placeholder="e.g. July 2026">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Badge / Category</label>
+            <input type="text" id="news_badge" class="form-control" placeholder="e.g. Paper, Talk, Award, Service, Grant" list="news_badge_list">
+            <datalist id="news_badge_list">
+              <option value="Paper">
+              <option value="Talk">
+              <option value="Award">
+              <option value="Service">
+              <option value="Grant">
+              <option value="Media">
+            </datalist>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Content</label>
+          <textarea id="news_content" class="form-control" placeholder="e.g. Our paper on *Equivariant Neural Operators* was accepted at **ICML 2026**!"></textarea>
+          <div class="form-help">Wrap text in <code>**double asterisks**</code> for <strong>bold</strong> and <code>*single asterisks*</code> for <em>italics</em> — these render automatically on the live site.</div>
+        </div>
+
+        <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
+          <button id="btnGenerateNews" class="btn-chip primary" style="padding: 0.6rem 1.25rem; font-size: 0.95rem;">
+            <i class="fa-solid fa-plus"></i> Add This News Item
+          </button>
+          <button id="btnCancelNewsEdit" type="button" class="btn-chip" style="padding: 0.6rem 1.25rem; font-size: 0.95rem; display: none;">
+            Cancel Edit
+          </button>
+        </div>
+
+        <h2 style="font-size: 1.1rem; font-weight: 700; margin: 1.75rem 0 1rem; color: var(--text-primary); border-top: 1px solid var(--border-color); padding-top: 1.25rem;">
+          News So Far
+        </h2>
+        <div class="form-help" style="margin-bottom: 0.5rem;">New items are added to the top of the list, so it stays newest-first. Drag order isn't supported here — remove and re-add an item if you need to reorder it.</div>
+        <div id="newsPreviewList" class="form-help" style="line-height: 1.8;">// News items you add will be listed here...</div>
+
+        <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
+          <button id="btnGenerateNewsJson" class="btn-chip primary" style="padding: 0.6rem 1.25rem; font-size: 0.95rem;">
+            <i class="fa-solid fa-bolt"></i> Generate Full news.json
+          </button>
+          <button id="btnDownloadNews" class="btn-chip" style="padding: 0.6rem 1.25rem; font-size: 0.95rem;">
+            <i class="fa-solid fa-download"></i> Download news.json
+          </button>
+          <button type="button" class="btn-chip copy-json-btn" data-copy-target="newsOutputBox" style="padding: 0.6rem 1.25rem; font-size: 0.95rem;">
+            <i class="fa-regular fa-copy"></i> Copy JSON
+          </button>
+        </div>
+
+        <div class="output-box" id="newsOutputBox"><code class="language-json">// Generated news.json will appear here...</code></div>
+      </div>
+    </div>
+
+    <!-- Curriculum Vitae Form -->
+    <div id="cvTab" class="admin-tab-content" style="display: none;">
+      <div class="admin-card">
+        <div class="section-hint">
+          <strong>CV Builder</strong> — Set the PDF download link, then add entries section by section (Education, Experience, etc.). Export when done and save as <code>content/cv.json</code>.
+        </div>
+        <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-primary);">
+          1. CV Metadata &amp; Download Links
+        </h2>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Last Updated Date Text</label>
+            <input type="text" id="cv_last_updated" class="form-control" placeholder="e.g. August 2026">
+          </div>
+          <div class="form-group">
+            <label class="form-label">PDF Download URL / File Path</label>
+            <input type="text" id="cv_pdf_url" class="form-control" placeholder="assets/Alex_Morgan_CV.pdf">
+          </div>
+        </div>
+
+        <h2 style="font-size: 1.25rem; font-weight: 700; margin: 1.75rem 0 1.25rem; color: var(--text-primary); border-top: 1px solid var(--border-color); padding-top: 1.25rem;">
+          2. Add a New Section (Optional)
+        </h2>
+        <div class="form-help" style="margin-bottom: 1rem;">The 5 default sections already exist below. Only use this if you want an extra section, like "Certifications".</div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Section Title</label>
+            <input type="text" id="cv_new_section_title" class="form-control" placeholder="e.g. Certifications">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Section Icon (FontAwesome class)</label>
+            <input type="text" id="cv_new_section_icon" class="form-control" placeholder="e.g. fa-solid fa-certificate">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Section Type</label>
+            <select id="cv_new_section_type" class="form-control">
+              <option value="list">List of Entries (like Education, Experience)</option>
+              <option value="skills">Skills Group (like Technical Skills)</option>
+            </select>
+          </div>
+          <div class="form-group" style="display: flex; align-items: flex-end; gap: 0.5rem;">
+            <button id="btnAddCvSection" class="btn-chip" style="padding: 0.6rem 1.25rem; font-size: 0.95rem; flex: 1;">
+              <i class="fa-solid fa-folder-plus"></i> Add New Section
+            </button>
+            <button id="btnCancelCvSectionEdit" type="button" class="btn-chip" style="padding: 0.6rem 1.25rem; font-size: 0.95rem; display: none;">
+              Cancel
+            </button>
+          </div>
+        </div>
+
+        <h2 style="font-size: 1.25rem; font-weight: 700; margin: 1.75rem 0 1.25rem; color: var(--text-primary); border-top: 1px solid var(--border-color); padding-top: 1.25rem;">
+          3. Add an Entry
+        </h2>
+
+        <div class="form-group">
+          <label class="form-label">Choose Section</label>
+          <select id="cv_entry_section" class="form-control"></select>
+        </div>
+
+        <!-- Fields for a normal List section (Education, Experience, Honors, Service, custom lists) -->
+        <div id="cv_list_fields">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">This Entry's Label Is A...</label>
+              <select id="cv_entry_label_type" class="form-control">
+                <option value="degree">Degree (for Education)</option>
+                <option value="role">Role / Position (for Experience or Service)</option>
+                <option value="award">Award (for Honors & Grants)</option>
+                <option value="title">Title (General)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label id="cv_entry_title_label" class="form-label">Degree Name</label>
+              <input type="text" id="cv_entry_title" class="form-control" placeholder="e.g. Ph.D. in Computer Science">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label id="cv_entry_org_label" class="form-label">University / Institution</label>
+              <input type="text" id="cv_entry_org" class="form-control" placeholder="e.g. Massachusetts Institute of Technology (MIT)">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Location (City, State/Country)</label>
+              <input type="text" id="cv_entry_location" class="form-control" placeholder="e.g. Cambridge, MA">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Period / Year / Date</label>
+              <input type="text" id="cv_entry_period" class="form-control" placeholder="e.g. 2025 – Present or 2026">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Badge / Distinction (Optional)</label>
+              <input type="text" id="cv_entry_badge" class="form-control" placeholder="e.g. Summa Cum Laude or Oral Presentation">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Bullet Points / Details (One per line)</label>
+            <textarea id="cv_entry_details" class="form-control" placeholder="Advisor: Prof. Elena Rostova&#10;Research on equivariant neural operators for PDEs."></textarea>
+          </div>
+
+          <!-- Entry Links (Optional) -->
+          <div style="margin-top: 1rem; border-top: 1px dashed var(--border-color); padding-top: 0.85rem;">
+            <label class="form-label" style="font-size: 0.85rem; font-weight: 700; color: var(--text-primary);">
+              Entry Links (Optional: Syllabus, Thesis, PDF, Certificate, Code, etc.)
+            </label>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" style="font-size: 0.8rem;">Link Type</label>
+                <select id="cv_link_type" class="form-control">
+                  <option value="pdf">PDF</option>
+                  <option value="paper">Paper / Publication</option>
+                  <option value="thesis">Thesis</option>
+                  <option value="certificate">Certificate</option>
+                  <option value="syllabus">Syllabus</option>
+                  <option value="code">Code / GitHub</option>
+                  <option value="materials">Materials</option>
+                  <option value="slides">Slides</option>
+                  <option value="website">Website / Link</option>
+                  <option value="other">Other (custom name)</option>
+                </select>
+              </div>
+              <div class="form-group" id="cv_link_customkey_wrap" style="display: none;">
+                <label class="form-label" style="font-size: 0.8rem;">Custom Link Name</label>
+                <input type="text" id="cv_link_customkey" class="form-control" placeholder="e.g. certificate">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" style="font-size: 0.8rem;">URL</label>
+                <input type="text" id="cv_link_url" class="form-control" placeholder="https://... or assets/...">
+              </div>
+              <div class="form-group" style="display: flex; align-items: flex-end; gap: 0.5rem;">
+                <button id="btnAddCvLink" type="button" class="btn-chip" style="padding: 0.5rem 1rem; font-size: 0.85rem; flex: 1;">
+                  <i class="fa-solid fa-link"></i> Add Link
+                </button>
+                <button id="btnCancelCvLinkEdit" type="button" class="btn-chip" style="padding: 0.5rem 1rem; font-size: 0.85rem; display: none;">
+                  Cancel
+                </button>
+              </div>
+            </div>
+            <div id="cvLinksChips" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.4rem; margin-bottom: 0.5rem;"></div>
+          </div>
+        </div>
+
+        <!-- Fields for a Skills Group section (Technical & Mathematical Skills, or custom skills sections) -->
+        <div id="cv_skills_fields" style="display: none;">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Skill Category</label>
+              <input type="text" id="cv_skills_category" class="form-control" placeholder="e.g. Programming & Frameworks">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Skills (Comma separated)</label>
+              <input type="text" id="cv_skills_list" class="form-control" placeholder="Python, PyTorch, JAX, C++ / CUDA">
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
+          <button id="btnAddCvEntry" class="btn-chip primary" style="padding: 0.6rem 1.25rem; font-size: 0.95rem;">
+            <i class="fa-solid fa-plus"></i> Add This Entry
+          </button>
+          <button id="btnCancelCvEntryEdit" type="button" class="btn-chip" style="padding: 0.6rem 1.25rem; font-size: 0.95rem; display: none;">
+            Cancel Edit
+          </button>
+        </div>
+
+        <h2 style="font-size: 1.25rem; font-weight: 700; margin: 1.75rem 0 1.25rem; color: var(--text-primary); border-top: 1px solid var(--border-color); padding-top: 1.25rem;">
+          4. What's In Your CV So Far
+        </h2>
+        <div id="cvPreviewList" class="form-help" style="line-height: 1.8;">// Entries you add will be listed here...</div>
+
+        <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
+          <button id="btnGenerateCvJson" class="btn-chip primary" style="padding: 0.6rem 1.25rem; font-size: 0.95rem;">
+            <i class="fa-solid fa-bolt"></i> Generate Full cv.json
+          </button>
+          <button id="btnDownloadCv" class="btn-chip" style="padding: 0.6rem 1.25rem; font-size: 0.95rem;">
+            <i class="fa-solid fa-download"></i> Download cv.json
+          </button>
+          <button type="button" class="btn-chip copy-json-btn" data-copy-target="cvOutputBox" style="padding: 0.6rem 1.25rem; font-size: 0.95rem;">
+            <i class="fa-regular fa-copy"></i> Copy JSON
+          </button>
+        </div>
+
+        <div class="output-box" id="cvOutputBox"><code class="language-json">// Generated cv.json will appear here...</code></div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="copyright-text">Academic Content Studio &bull; Designed for simple, no-code portfolio management.</div>
+    </div>
+  </footer>
+
+  <script src="js/editor.js"></script>
+</body>
+</html>

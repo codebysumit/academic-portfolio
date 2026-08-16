@@ -1,0 +1,73 @@
+[
+  {
+    "id": "geomtorch",
+    "title": "GeomTorch: Geometric Deep Learning & Lie Group Equivariance in PyTorch",
+    "subtitle": "Open-Source Research Framework",
+    "category": "Open Source Software",
+    "date": "2024 - Present",
+    "image": "images/projects/geomtorch.svg",
+    "description": "An open-source PyTorch library providing clean implementations of SO(3), SE(3), and Lorentz-equivariant convolution layers, Clebsch-Gordan tensor products, and Clifford algebra layers. Starred by over 1,400 researchers worldwide.",
+    "tags": [
+      "PyTorch",
+      "Geometric Deep Learning",
+      "CUDA",
+      "C++",
+      "Lie Groups"
+    ],
+    "links": {
+      "github": "https://github.com/alexmorgan/geomtorch",
+      "docs": "https://geomtorch.readthedocs.io",
+      "paper": "#publications",
+      "demo": "https://geomtorch.org/demo",
+      "video": "https://youtube.com",
+      "slides": "https://slideshare.com",
+      "poster": "https://poster.com",
+      "castom": "https://castom.com"
+    }
+  },
+  {
+    "id": "sympflow",
+    "title": "SympFlow: Symplectic Continuous Normalizing Flows for Hamiltonian Physics",
+    "subtitle": "Physics-Informed Simulation Tool",
+    "category": "Research Tool",
+    "date": "2023 - 2025",
+    "image": "images/projects/sympflow.svg",
+    "description": "High-performance Python/JAX package for long-horizon symplectic integration using neural differential equations. Guarantees conservation of phase-space volume and total energy invariants in mechanical systems.",
+    "tags": [
+      "JAX",
+      "Differential Geometry",
+      "SciML",
+      "Symplectic Integrators"
+    ],
+    "links": {
+      "github": "https://github.com/alexmorgan/sympflow",
+      "demo": "https://alexmorgan.github.io/sympflow-demo",
+      "paper": "#publications",
+      "docs": "https://sympflow.readthedocs.io",
+      "castom": "https://castom.com"
+    }
+  },
+  {
+    "id": "pdebench-spectral",
+    "title": "SpectralPDE-Bench: Benchmark Suite for Neural Operators on Non-Trivial Topologies",
+    "subtitle": "Benchmark & Dataset",
+    "category": "Datasets & Benchmarks",
+    "date": "2025 - Present",
+    "image": "images/projects/pdebench.svg",
+    "description": "A standardized benchmark dataset comprising 50,000 high-fidelity simulations of Navier-Stokes and Maxwell equations across complex toroidal, spherical, and manifold meshes.",
+    "tags": [
+      "Datasets",
+      "CFD",
+      "Benchmarking",
+      "HPC",
+      "PyTorch"
+    ],
+    "links": {
+      "github": "https://github.com/alexmorgan/spectral-pde-bench",
+      "dataset": "https://huggingface.co/datasets/alexmorgan/spectral-pde-bench",
+      "website": "https://spectral-pde-bench.org",
+      "paper": "#publications",
+      "castom": "https://castom.com"
+    }
+  }
+]

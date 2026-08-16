@@ -1,0 +1,73 @@
+[
+  {
+    "title": "Geometric Deep Learning for Partial Differential Equations",
+    "event": "Institute for Pure and Applied Mathematics (IPAM) Workshop",
+    "type": "Invited Seminar",
+    "date": "May 18, 2026",
+    "location": "UCLA, Los Angeles, CA",
+    "description": "Discussed manifold gauge equivariance in neural operators, boundary layer error analysis, and applications to turbulent atmospheric simulation.",
+    "links": {
+      "slides": "https://speakerdeck.com",
+      "video": "https://youtube.com",
+      "event": "https://ipam.ucla.edu",
+      "paper": "https://relatedpage.com",
+      "code": "https://github.com",
+      "poster": "https://poster.com",
+      "castom": "https://castom.com"
+    }
+  },
+  {
+    "title": "Equivariant Operator Learning for Navier-Stokes Equations",
+    "event": "International Conference on Machine Learning (ICML 2026)",
+    "type": "Oral Presentation",
+    "date": "July 14, 2026",
+    "location": "Vienna, Austria",
+    "description": "Oral presentation for our ICML 2026 paper covering Lie group symmetry transformations $\\mathrm{SO}(3) \\times \\mathbb{R}^+$ and experimental validation.",
+    "links": {
+      "slides": "https://speakerdeck.com",
+      "paper": "#publications",
+      "video": "https://youtube.com",
+      "code": "https://github.com",
+      "poster": "https://poster.com",
+      "dataset": "https://huggingface.co",
+      "castom": "https://castom.com"
+    }
+  },
+  {
+    "title": "Theoretical Foundations of Physics-Informed Machine Learning",
+    "event": "Stanford AI Laboratory (SAIL) Seminar",
+    "type": "Departmental Talk",
+    "date": "February 20, 2026",
+    "location": "Gates Computer Science Building, Stanford University",
+    "description": "An overview of optimization dynamics, spectral bias, and kernel formulations in physics-constrained deep learning models.",
+    "links": {
+      "slides": "https://speakerdeck.com",
+      "event": "https://ai.stanford.edu",
+      "pdf": "https://arxiv.org",
+      "doi": "https://doi.org"
+    }
+  },
+  {
+    "title": "Lorentz-Equivariant Clifford Networks for High Energy Physics",
+    "event": "NeurIPS Workshop on Machine Learning and the Physical Sciences",
+    "type": "Spotlight Presentation",
+    "date": "December 12, 2025",
+    "location": "Vancouver, Canada",
+    "description": "Presented our work on Clifford algebra neural architectures and relativistic Lorentz invariance for CERN LHC particle collision analysis.",
+    "links": {
+      "slides": "https://speakerdeck.com",
+      "code": "https://github.com"
+    }
+  },
+  {
+    "title": "Symplectic Mechanics & Neural ODEs: Preserving Invariants in AI",
+    "event": "MIT Applied Mathematics Colloquium",
+    "type": "Invited Talk",
+    "date": "September 28, 2024",
+    "location": "Cambridge, MA",
+    "description": "Deep dive into symplectic differential geometry, Poisson brackets, and continuous Hamiltonian systems in AI.",
+    "links": {
+      "slides": "https://speakerdeck.com"
+    }
+  }
+]

@@ -1,0 +1,169 @@
+{
+  "pdfDownloadUrl": "assets/Alex_Morgan_CV.pdf",
+  "lastUpdated": "August 2026",
+  "sections": [
+    {
+      "title": "Education",
+      "icon": "fa-solid fa-graduation-cap",
+      "items": [
+        {
+          "degree": "Ph.D. in Computer Science & Artificial Intelligence",
+          "institution": "Massachusetts Institute of Technology (MIT)",
+          "location": "Cambridge, MA",
+          "period": "2020 – 2025",
+          "details": [
+            "Dissertation: *Geometric and Physics-Constrained Neural Operators for Continuous Dynamical Systems*",
+            "Advisor: Prof. David K. Marcus",
+            "Committee: Prof. Leslie Pack Kaelbling, Prof. Gilbert Strang, Prof. Max Tegmark",
+            "Recipient of the MIT EECS Outstanding Doctoral Dissertation Honorable Mention."
+          ],
+          "links": {
+            "thesis": "https://dspace.mit.edu",
+            "pdf": "https://dspace.mit.edu/thesis.pdf",
+            "castom": "https://castom.com"
+          }
+        },
+        {
+          "degree": "B.S. in Mathematics and Computer Science (Double Major)",
+          "institution": "University of California, Berkeley",
+          "location": "Berkeley, CA",
+          "period": "2016 – 2020",
+          "details": [
+            "Summa Cum Laude (GPA: 3.98/4.00), Highest Distinction in General Scholarship",
+            "Undergraduate Thesis: *Spectral Graph Theory and Semidefinite Relaxations for Max-Cut*"
+          ],
+          "links": {
+            "thesis": "https://escholarship.org/uc/item/12345",
+            "certificate": "https://berkeley.edu/honors"
+          }
+        }
+      ]
+    },
+    {
+      "title": "Academic Appointments & Experience",
+      "icon": "fa-solid fa-briefcase",
+      "items": [
+        {
+          "role": "Postdoctoral Research Fellow",
+          "institution": "Stanford University, AI Laboratory (SAIL)",
+          "location": "Stanford, CA",
+          "period": "2025 – Present",
+          "details": [
+            "Host: Prof. Elena Rostova",
+            "Conducting research on symmetry-preserving neural representations, manifold-valued neural operators, and foundations of scientific machine learning."
+          ],
+          "links": {
+            "website": "https://ai.stanford.edu",
+            "materials": "https://github.com/stanford-sail"
+          }
+        },
+        {
+          "role": "Research Scientist Intern",
+          "institution": "Google DeepMind, Science Team",
+          "location": "London, UK (Hybrid)",
+          "period": "Summer 2024",
+          "details": [
+            "Worked on large-scale geometric transformer architectures for molecular crystal property prediction and protein-ligand conformational dynamics."
+          ],
+          "links": {
+            "website": "https://deepmind.google/discover/blog",
+            "paper": "#publications"
+          }
+        },
+        {
+          "role": "Graduate Research Assistant",
+          "institution": "MIT Computer Science & Artificial Intelligence Lab (CSAIL)",
+          "location": "Cambridge, MA",
+          "period": "2020 – 2025",
+          "details": [
+            "Investigated theoretical bounds for physics-informed neural networks and symplectic Hamiltonian neural networks."
+          ],
+          "links": {
+            "website": "https://csail.mit.edu",
+            "code": "https://github.com/mit-csail"
+          }
+        }
+      ]
+    },
+    {
+      "title": "Honors, Grants & Fellowships",
+      "icon": "fa-solid fa-award",
+      "items": [
+        {
+          "award": "NSF Mathematical & Physical Sciences Postdoctoral Research Fellowship ($320,000)",
+          "organization": "National Science Foundation",
+          "year": "2025 – 2027",
+          "links": {
+            "certificate": "https://nsf.gov/awardsearch",
+            "castom": "https://castom.com"
+          }
+        },
+        {
+          "award": "Oral Presentation (Top 1.8% of submissions)",
+          "organization": "International Conference on Machine Learning (ICML)",
+          "year": "2026",
+          "links": {
+            "paper": "#publications",
+            "slides": "https://speakerdeck.com"
+          }
+        },
+        {
+          "award": "Outstanding Doctoral Graduate Research Award",
+          "organization": "MIT Department of EECS",
+          "year": "2025"
+        },
+        {
+          "award": "Spotlight Presentation Award",
+          "organization": "NeurIPS",
+          "year": "2025"
+        },
+        {
+          "award": "National Science Foundation (NSF) Graduate Research Fellowship (GRFP)",
+          "organization": "National Science Foundation",
+          "year": "2020 – 2024"
+        },
+        {
+          "award": "Departmental Citation in Computer Science (Top graduating senior)",
+          "organization": "UC Berkeley",
+          "year": "2020"
+        }
+      ]
+    },
+    {
+      "title": "Professional Service & Reviewing",
+      "icon": "fa-solid fa-handshake-angle",
+      "items": [
+        {
+          "role": "Area Chair / Meta-Reviewer",
+          "details": "NeurIPS (2025, 2026) Workshop on Machine Learning and the Physical Sciences; ICLR Workshop on Geometric Deep Learning."
+        },
+        {
+          "role": "Conference Reviewer",
+          "details": "NeurIPS (2022–2026), ICML (2023–2026), ICLR (2023–2026), CVPR (2024–2026), AISTATS (2024–2026)."
+        },
+        {
+          "role": "Journal Reviewer",
+          "details": "IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI), Journal of Machine Learning Research (JMLR), SIAM Journal on Scientific Computing (SISC)."
+        }
+      ]
+    },
+    {
+      "title": "Technical & Mathematical Skills",
+      "icon": "fa-solid fa-code",
+      "skillsGroup": [
+        {
+          "category": "Mathematics & Theory",
+          "skills": ["Differential Geometry", "Lie Groups & Lie Algebras", "Functional Analysis", "Partial Differential Equations (PDEs)", "Convex Optimization", "Spectral Theory"]
+        },
+        {
+          "category": "Programming & Frameworks",
+          "skills": ["Python", "PyTorch", "JAX", "C++ / CUDA", "Julia", "LaTeX", "Git", "Linux / HPC Slurm"]
+        },
+        {
+          "category": "Scientific Computing",
+          "skills": ["FEniCS", "OpenFOAM", "SciPy / NumPy", "Distributed Data Parallel (DDP)", "HDF5"]
+        }
+      ]
+    }
+  ]
+}

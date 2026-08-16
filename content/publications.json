@@ -1,0 +1,129 @@
+[
+  {
+    "id": "morgan2026equivariant",
+    "title": "Equivariant Neural Operators for Incompressible Fluid Dynamics on Riemannian Manifolds",
+    "authors": [
+      "Alex Morgan",
+      "Elena Rostova",
+      "Marcus Vance"
+    ],
+    "venue": "International Conference on Machine Learning (ICML)",
+    "year": 2026,
+    "type": "Conference",
+    "selected": true,
+    "badge": "Oral Presentation (Top 1.8%)",
+    "abstract": "We present a geometric framework for operator learning on non-Euclidean geometries where vector fields are subject to continuous Lie group symmetries $G = \\mathrm{SO}(3) \\times \\mathbb{R}^+$. By formulating kernel integral operators over manifold tangent bundles $TM$, we prove that the approximation error decays with $\\mathcal{O}(N^{-1/d})$ under Sobolev norm $\\|u - u_\\theta\\|_{H^s(M)}$. Extensive experiments on turbulent Navier-Stokes simulations demonstrate a $4.2\\times$ speedup over traditional finite-volume solvers while preserving exact energy conservation laws $\\frac{\\mathrm{d}}{\\mathrm{d}t}E(t) = -2\\nu \\Omega(t)$.",
+    "links": {
+      "pdf": "https://arxiv.org",
+      "arxiv": "https://arxiv.org/abs/2606.12345",
+      "code": "https://github.com/alexmorgan/equivariant-fluid-operators",
+      "project": "https://alexmorgan.github.io/equivariant-fluids",
+      "video": "https://youtube.com",
+      "doi": "https://doi.org/10.5334/dsj-2017-0",
+      "dataset": "http://kaggle.com",
+      "poster": "poster.com",
+      "slides": "slide.com",
+      "castom": "https://castom.com"
+    },
+    "bibtex": "@inproceedings{morgan2026equivariant,\n  title={Equivariant Neural Operators for Incompressible Fluid Dynamics on Riemannian Manifolds},\n  author={Morgan, Alex and Rostova, Elena and Vance, Marcus},\n  booktitle={Proceedings of the 43rd International Conference on Machine Learning (ICML)},\n  year={2026}\n}"
+  },
+  {
+    "id": "morgan2025provable",
+    "title": "Provable Generalization Bounds for Physics-Informed Neural Networks via Neural Tangent Kernel Theory",
+    "authors": [
+      "Alex Morgan",
+      "David K. Marcus"
+    ],
+    "venue": "IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)",
+    "year": 2025,
+    "type": "Journal",
+    "selected": true,
+    "badge": "Featured Article",
+    "abstract": "Physics-Informed Neural Networks (PINNs) have emerged as an effective paradigm for solving non-linear partial differential equations. In this work, we analyze the training dynamics of PINNs under the infinite-width limit via the Neural Tangent Kernel (NTK) regime. We derive rigorous generalization bounds showing that the empirical residual error $\\mathcal{R}_N(\\theta)$ satisfies $\\mathbb{E}[\\mathcal{R}(u_\\theta)] \\le \\mathcal{R}_N(u_\\theta) + \\mathcal{O}\\left(\\sqrt{\\frac{\\mathrm{Tr}(\\mathbf{K}_{\\infty})}{N}}\\right)$ where $\\mathbf{K}_\\infty$ is the coupled NTK matrix incorporating boundary conditions.",
+    "links": {
+      "pdf": "https://arxiv.org",
+      "arxiv": "https://arxiv.org/abs/2504.09876",
+      "code": "https://github.com/alexmorgan/pinn-ntk-bounds"
+    },
+    "bibtex": "@article{morgan2025provable,\n  title={Provable Generalization Bounds for Physics-Informed Neural Networks via Neural Tangent Kernel Theory},\n  author={Morgan, Alex and Marcus, David K.},\n  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},\n  volume={47},\n  number={8},\n  pages={1102--1118},\n  year={2025},\n  publisher={IEEE}\n}"
+  },
+  {
+    "id": "morgan2025geometric",
+    "title": "Geometric Clifford Algebras for Deep Learning on Relativistic Spacetime",
+    "authors": [
+      "Alex Morgan",
+      "Chen Wei",
+      "Elena Rostova"
+    ],
+    "venue": "Advances in Neural Information Processing Systems (NeurIPS)",
+    "year": 2025,
+    "type": "Conference",
+    "selected": true,
+    "badge": "Spotlight",
+    "abstract": "We construct Clifford algebra valued neural networks invariant under Lorentz transformations $\\mathrm{SO}^+(1,3)$. By embedding multivector representations $\\psi \\in \\mathcal{C}\\ell_{1,3}(\\mathbb{R})$, our architecture natively handles 4-vector kinematics and electromagnetic field tensors $F^{\\mu\\nu}$ without requiring ad-hoc coordinate projections. Validated on high-energy particle physics datasets from CERN LHC.",
+    "links": {
+      "pdf": "https://arxiv.org",
+      "code": "https://github.com/alexmorgan/clifford-lorentz-nets",
+      "project": "https://alexmorgan.github.io/clifford-nets"
+    },
+    "bibtex": "@inproceedings{morgan2025geometric,\n  title={Geometric Clifford Algebras for Deep Learning on Relativistic Spacetime},\n  author={Morgan, Alex and Wei, Chen and Rostova, Elena},\n  booktitle={Advances in Neural Information Processing Systems (NeurIPS)},\n  volume={38},\n  year={2025}\n}"
+  },
+  {
+    "id": "morgan2024curvature",
+    "title": "Riemannian Gradient Flow and Loss Surface Curvature in Overparameterized Deep Models",
+    "authors": [
+      "Alex Morgan",
+      "David K. Marcus"
+    ],
+    "venue": "International Conference on Learning Representations (ICLR)",
+    "year": 2024,
+    "type": "Conference",
+    "selected": false,
+    "badge": "",
+    "abstract": "We examine the Hessian eigenspectrum $\\lambda_1 \\ge \\lambda_2 \\ge \\dots \\ge \\lambda_p$ along continuous Riemannian gradient descent trajectories. We show that the sharpness index $\\lambda_{\\max}(\\nabla^2 \\mathcal{L}(\\mathbf{w}))$ exhibits a distinct phase transition at the edge of stability, providing practical regularization techniques for modern transformers.",
+    "links": {
+      "pdf": "https://arxiv.org",
+      "code": "https://github.com/alexmorgan/hessian-eigenspectrum"
+    },
+    "bibtex": "@inproceedings{morgan2024curvature,\n  title={Riemannian Gradient Flow and Loss Surface Curvature in Overparameterized Deep Models},\n  author={Morgan, Alex and Marcus, David K.},\n  booktitle={International Conference on Learning Representations (ICLR)},\n  year={2024}\n}"
+  },
+  {
+    "id": "morgan2024hamiltonian",
+    "title": "Symplectic Neural Ordinary Differential Equations for Energy-Preserving Hamiltonian Dynamics",
+    "authors": [
+      "Alex Morgan",
+      "Sofia Chen",
+      "David K. Marcus"
+    ],
+    "venue": "SIAM Journal on Applied Dynamical Systems (SIADS)",
+    "year": 2024,
+    "type": "Journal",
+    "selected": false,
+    "badge": "",
+    "abstract": "Standard neural ODEs violate symplectic geometric structures when modeling conservative physical systems, leading to energy drift. We introduce Symplectic Continuous Normalizing Flows that parameterize the Hamiltonian vector field $X_H = J \\nabla H(q, p)$ where $J = \\begin{pmatrix} 0 & I \\\\ -I & 0 \\end{pmatrix}$, ensuring long-term trajectory stability over $10^6$ integration steps.",
+    "links": {
+      "pdf": "https://arxiv.org",
+      "code": "https://github.com/alexmorgan/symplectic-neural-ode"
+    },
+    "bibtex": "@article{morgan2024hamiltonian,\n  title={Symplectic Neural Ordinary Differential Equations for Energy-Preserving Hamiltonian Dynamics},\n  author={Morgan, Alex and Chen, Sofia and Marcus, David K.},\n  journal={SIAM Journal on Applied Dynamical Systems},\n  volume={23},\n  number={3},\n  pages={1580--1604},\n  year={2024}\n}"
+  },
+  {
+    "id": "morgan2023foundations",
+    "title": "On the Convergence of Stochastic Polyak Momentum on Non-Convex Variational Inequalities",
+    "authors": [
+      "Alex Morgan",
+      "David K. Marcus"
+    ],
+    "venue": "arXiv preprint arXiv:2311.08742",
+    "year": 2023,
+    "type": "Preprint",
+    "selected": false,
+    "badge": "Preprint",
+    "abstract": "We analyze stochastic heavy-ball momentum methods applied to non-monotone variational inequalities and min-max games $\\min_{\\mathbf{x}} \\max_{\\mathbf{y}} f(\\mathbf{x}, \\mathbf{y})$. We establish an asymptotic convergence rate of $\\mathcal{O}(1/\\sqrt{K})$ without requiring strong pseudo-monotonicity.",
+    "links": {
+      "arxiv": "https://arxiv.org/abs/2311.08742",
+      "pdf": "https://arxiv.org"
+    },
+    "bibtex": "@article{morgan2023foundations,\n  title={On the Convergence of Stochastic Polyak Momentum on Non-Convex Variational Inequalities},\n  author={Morgan, Alex and Marcus, David K.},\n  journal={arXiv preprint arXiv:2311.08742},\n  year={2023}\n}"
+  }
+]

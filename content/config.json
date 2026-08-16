@@ -1,0 +1,118 @@
+{
+  "siteTitle": "Alex Morgan, Ph.D.",
+  "siteDescription": "Academic website and portfolio of Alex Morgan - Postdoctoral Researcher in Computer Science & Artificial Intelligence.",
+  "baseUrl": "/",
+  "author": {
+    "name": "Alex Morgan, Ph.D.",
+    "avatar": "images/profile.jpg",
+    "title": "Postdoctoral Researcher",
+    "department": "Department of Computer Science & AI Lab",
+    "institution": "Stanford University",
+    "location": "Stanford, CA, USA",
+    "email": "alex.morgan@stanford.edu",
+    "phone": "+1 9833549578",
+    "bio": "I am a Postdoctoral Researcher working at the intersection of Deep Learning, Mathematical Optimization, and Scientific Machine Learning. My research focuses on developing provably robust neural architectures and geometric deep learning frameworks for physical sciences.",
+    "interests": [
+      "Deep Learning Theory",
+      "Scientific Machine Learning",
+      "Geometric Deep Learning",
+      "Convex & Non-Convex Optimization",
+      "Mathematical Physics"
+    ],
+    "social": [
+      {
+        "name": "Google Scholar",
+        "icon": "fa-brands fa-google-scholar",
+        "url": "https://scholar.google.com",
+        "display": "Google Scholar"
+      },
+      {
+        "name": "ORCID",
+        "icon": "fa-brands fa-orcid",
+        "url": "https://orcid.org",
+        "display": "orcid.org"
+      },
+      {
+        "name": "GitHub",
+        "icon": "fa-brands fa-github",
+        "url": "https://github.com",
+        "display": "github.com"
+      },
+      {
+        "name": "arXiv",
+        "icon": "fa-solid fa-graduation-cap",
+        "url": "https://arxiv.org",
+        "display": "arXiv Profile"
+      },
+      {
+        "name": "LinkedIn",
+        "icon": "fa-brands fa-linkedin",
+        "url": "https://linkedin.com",
+        "display": "LinkedIn"
+      },
+      {
+        "name": "Twitter / X",
+        "icon": "fa-brands fa-x-twitter",
+        "url": "https://twitter.com",
+        "display": "twitter.com"
+      },
+      {
+        "name": "Email",
+        "icon": "fa-solid fa-envelope",
+        "url": "mailto:alex.morgan@stanford.edu",
+        "display": "alex.morgan@stanford.edu"
+      }
+    ]
+  },
+  "navigation": [
+    {
+      "id": "about",
+      "title": "About",
+      "icon": "fa-solid fa-user",
+      "default": true
+    },
+    {
+      "id": "publications",
+      "title": "Publications",
+      "icon": "fa-solid fa-book-open"
+    },
+    {
+      "id": "talks",
+      "title": "Talks",
+      "icon": "fa-solid fa-person-chalkboard"
+    },
+    {
+      "id": "teaching",
+      "title": "Teaching",
+      "icon": "fa-solid fa-chalkboard-user"
+    },
+    {
+      "id": "portfolio",
+      "title": "Portfolio",
+      "icon": "fa-solid fa-laptop-code"
+    },
+    {
+      "id": "blog",
+      "title": "Blog",
+      "icon": "fa-solid fa-pen-nib"
+    },
+    {
+      "id": "cv",
+      "title": "CV",
+      "icon": "fa-solid fa-file-lines"
+    }
+  ],
+  "footer": {
+    "showCopyright": true,
+    "copyrightText": "© 2026 Alex Morgan. All rights reserved. ",
+    "customNote": "Devaloped by Sumit Das."
+  },
+  "features": {
+    "enableMathJaxKaTeX": true,
+    "enableCodeHighlighting": true,
+    "enableCodeCopyButton": true,
+    "enableDarkMode": true,
+    "enableGlobalSearch": true,
+    "enableBibtexModal": true
+  }
+}
