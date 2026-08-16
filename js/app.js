@@ -338,6 +338,12 @@
       return;
     }
 
+    // Check if Maintenance Mode is enabled
+    if (state.config.features && state.config.features.enableMaintenanceMode === true) {
+      window.location.replace('maintenance.html');
+      return;
+    }
+
     document.title = state.config.siteTitle || 'Academic Website';
     renderHeaderAndSidebar();
     renderFooter();

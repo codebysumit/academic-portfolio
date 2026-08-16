@@ -32,6 +32,12 @@ You can customize everything in two ways:
    "avatar": "images/my_photo.jpg"
    ```
 
+### Custom Favicons (Browser Icons)
+Favicons in `images/favicon/` were generated using [RealFaviconGenerator.net](https://realfavicongenerator.net/). To replace them with your own logo:
+1. Upload your custom icon/logo to [RealFaviconGenerator.net](https://realfavicongenerator.net/).
+2. Download the generated package.
+3. Replace the files inside `images/favicon/` (`favicon.svg`, `favicon-96x96.png`, `favicon.ico`, `apple-touch-icon.png`, `site.webmanifest`).
+
 ### Name, Title, Bio & Contact
 Open `content/config.json` and edit the `author` block:
 ```json
@@ -440,7 +446,8 @@ The `features` block in `content/config.json` lets you enable or disable site-wi
   "enableCodeCopyButton": true,
   "enableDarkMode": true,
   "enableGlobalSearch": true,
-  "enableBibtexModal": true
+  "enableBibtexModal": true,
+  "enableMaintenanceMode": false
 }
 ```
 
@@ -452,6 +459,7 @@ The `features` block in `content/config.json` lets you enable or disable site-wi
 | `enableDarkMode` | Shows the 🌙 Dark / Light mode toggle in the header |
 | `enableGlobalSearch` | Enables the 🔍 quick-search modal (keyboard shortcut `/`) |
 | `enableBibtexModal` | Enables the "Cite" button that opens a BibTeX copy modal |
+| `enableMaintenanceMode` | Automatically redirects site visitors to `maintenance.html` |
 
 ---
 

@@ -173,7 +173,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       feat_codecopy: 'enableCodeCopyButton',
       feat_darkmode: 'enableDarkMode',
       feat_search: 'enableGlobalSearch',
-      feat_bibtex: 'enableBibtexModal'
+      feat_bibtex: 'enableBibtexModal',
+      feat_maintenance: 'enableMaintenanceMode'
     };
     if (cfg.features) {
       Object.keys(featureMap).forEach((boxId) => {
@@ -274,12 +275,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Build the features object from the checkboxes
     base.features = {
-      enableMathJaxKaTeX: document.getElementById('feat_mathjax').checked,
-      enableCodeHighlighting: document.getElementById('feat_codehighlight').checked,
-      enableCodeCopyButton: document.getElementById('feat_codecopy').checked,
-      enableDarkMode: document.getElementById('feat_darkmode').checked,
-      enableGlobalSearch: document.getElementById('feat_search').checked,
-      enableBibtexModal: document.getElementById('feat_bibtex').checked
+      enableMathJaxKaTeX: document.getElementById('feat_mathjax') ? document.getElementById('feat_mathjax').checked : true,
+      enableCodeHighlighting: document.getElementById('feat_codehighlight') ? document.getElementById('feat_codehighlight').checked : true,
+      enableCodeCopyButton: document.getElementById('feat_codecopy') ? document.getElementById('feat_codecopy').checked : true,
+      enableDarkMode: document.getElementById('feat_darkmode') ? document.getElementById('feat_darkmode').checked : true,
+      enableGlobalSearch: document.getElementById('feat_search') ? document.getElementById('feat_search').checked : true,
+      enableBibtexModal: document.getElementById('feat_bibtex') ? document.getElementById('feat_bibtex').checked : true,
+      enableMaintenanceMode: document.getElementById('feat_maintenance') ? document.getElementById('feat_maintenance').checked : false
     };
 
     // Build the social links array only from boxes the student actually filled in

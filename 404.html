@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="404 - Page Not Found">
+  <title>404 Page Not Found | Academic Portfolio</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/favicon/favicon-96x96.png?v=20260817" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="images/favicon/favicon.svg?v=20260817" />
+  <link rel="shortcut icon" href="images/favicon/favicon.ico?v=20260817" />
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png?v=20260817" />
+  <meta name="apple-mobile-web-app-title" content="Academic Portfolio" />
+  <link rel="manifest" href="images/favicon/site.webmanifest?v=20260817" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Application Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* Custom 404 Specific Styling & Animations */
+    .error-wrapper {
+      min-height: calc(100vh - var(--nav-height) - 70px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+    }
+
+    .error-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      padding: 3.5rem 2.5rem;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .error-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+    }
+
+    /* Interactive Animated Eyes */
+    .eyes-container {
+      display: flex;
+      justify-content: center;
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .eye {
+      width: 76px;
+      height: 76px;
+      background: var(--bg-accent-subtle);
+      border: 3px solid var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: 0 0 20px rgba(37, 99, 235, 0.15);
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .eye:hover {
+      transform: scale(1.06);
+    }
+
+    .eye-pupil {
+      width: 28px;
+      height: 28px;
+      background-color: var(--text-primary);
+      border-radius: 50%;
+      position: relative;
+      transition: transform 0.08s ease-out;
+      box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
+    }
+
+    .eye-pupil::after {
+      content: '';
+      position: absolute;
+      top: 4px;
+      right: 5px;
+      width: 8px;
+      height: 8px;
+      background-color: var(--bg-primary);
+      border-radius: 50%;
+    }
+
+    /* Fallback animation before mouse move or on idle touch devices */
+    @keyframes pupilIdle {
+      0%, 100% { transform: translate(0, 0); }
+      20% { transform: translate(-8px, -6px); }
+      40% { transform: translate(8px, -4px); }
+      60% { transform: translate(6px, 8px); }
+      80% { transform: translate(-6px, 6px); }
+    }
+
+    .eye-pupil.idle-animated {
+      animation: pupilIdle 6s infinite ease-in-out;
+    }
+
+    .error-code-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--primary);
+      background-color: var(--primary-subtle);
+      padding: 0.35rem 1rem;
+      border-radius: var(--radius-full);
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .error-title {
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .error-description {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      margin-bottom: 2.25rem;
+      line-height: 1.6;
+    }
+
+    .error-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-action-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--primary);
+      color: #ffffff !important;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      text-decoration: none;
+    }
+
+    .btn-action-primary:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-lg);
+      text-decoration: none;
+    }
+
+    .btn-action-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--bg-secondary);
+      color: var(--text-primary) !important;
+      border: 1px solid var(--border-color);
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-radius: var(--radius-md);
+      transition: var(--transition);
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn-action-secondary:hover {
+      background-color: var(--bg-hover);
+      border-color: var(--border-hover);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="/" class="site-brand">
+        <i class="fa-solid fa-graduation-cap" style="color: var(--primary);"></i>
+        <span>Academic Portfolio</span>
+      </a>
+
+      <div class="header-actions">
+        <button class="icon-btn" id="themeToggleBtn" title="Toggle Dark / Light Mode" aria-label="Toggle Theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 404 Error Main Content -->
+  <main class="error-wrapper">
+    <div class="error-card">
+      
+      <!-- Interactive Eye Animation -->
+      <div class="eyes-container">
+        <div class="eye">
+          <div class="eye-pupil idle-animated" id="pupilLeft"></div>
+        </div>
+        <div class="eye">
+          <div class="eye-pupil idle-animated" id="pupilRight"></div>
+        </div>
+      </div>
+
+      <div class="error-code-badge">
+        <i class="fa-solid fa-triangle-exclamation"></i> ERROR 404
+      </div>
+
+      <h1 class="error-title">Looks like you're lost</h1>
+      <p class="error-description">
+        The page you are looking for might have been moved, renamed, or doesn't exist in this academic portfolio.
+      </p>
+
+      <div class="error-actions">
+        <a href="/" class="btn-action-primary">
+          <i class="fa-solid fa-house"></i> Return to Home
+        </a>
+        <button class="btn-action-secondary" onclick="history.back()">
+          <i class="fa-solid fa-arrow-left"></i> Go Back
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Minimalist & Professional Copyright Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="copyright-text" id="footerCopyright">
+        &copy; 2026 Academic Portfolio. All rights reserved.
+      </div>
+      <div class="footer-custom-note" id="footerCustomNote" style="display:none;"></div>
+    </div>
+  </footer>
+
+  <script>
+    // Dark/Light Theme Switching
+    (function () {
+      const savedTheme = localStorage.getItem('theme') || 
+        (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      updateThemeIcon(savedTheme);
+
+      const themeBtn = document.getElementById('themeToggleBtn');
+      if (themeBtn) {
+        themeBtn.addEventListener('click', function () {
+          const current = document.documentElement.getAttribute('data-theme');
+          const next = current === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          updateThemeIcon(next);
+        });
+      }
+
+      function updateThemeIcon(theme) {
+        const icon = document.querySelector('#themeToggleBtn i');
+        if (icon) {
+          icon.className = theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+        }
+      }
+    })();
+
+    // Dynamic Config & Footer Loader
+    (function () {
+      fetch('content/config.json')
+        .then(res => {
+          if (!res.ok) throw new Error('Failed to load config');
+          return res.json();
+        })
+        .then(config => {
+          if (config.siteTitle) {
+            const brandSpan = document.querySelector('.site-brand span');
+            if (brandSpan) brandSpan.textContent = config.siteTitle;
+          }
+
+          const footerSection = document.querySelector('.site-footer');
+          const footerEl = document.getElementById('footerCopyright');
+          const footerEl2 = document.getElementById('footerCustomNote');
+
+          if (!config.footer) return;
+          const footer = config.footer;
+
+          if (footer.showCopyright === false) {
+            if (footerSection) footerSection.style.display = 'none';
+            return;
+          } else {
+            if (footerSection) footerSection.style.display = '';
+          }
+
+          if (footerEl) {
+            const year = new Date().getFullYear();
+            const authorName = (config.author && config.author.name) || 'Academic Portfolio';
+            footerEl.textContent = footer.copyrightText || `© ${year} ${authorName}. All rights reserved.`;
+          }
+
+          if (footerEl2) {
+            if (footer.customNote && footer.customNote.trim()) {
+              footerEl2.textContent = footer.customNote;
+              footerEl2.style.display = '';
+            } else {
+              footerEl2.style.display = 'none';
+            }
+          }
+        })
+        .catch(err => {
+          console.warn('Could not load config.json for 404 page:', err);
+        });
+    })();
+
+    // Eye Pupil Movement Script (Interactive Cursor Tracking)
+    (function () {
+      const pupils = document.querySelectorAll('.eye-pupil');
+      const eyes = document.querySelectorAll('.eye');
+
+      if (!eyes.length || !pupils.length) return;
+
+      let hasMovedMouse = false;
+
+      window.addEventListener('mousemove', function (e) {
+        if (!hasMovedMouse) {
+          hasMovedMouse = true;
+          pupils.forEach(p => p.classList.remove('idle-animated'));
+        }
+
+        eyes.forEach((eye, index) => {
+          const rect = eye.getBoundingClientRect();
+          const eyeCenterX = rect.left + rect.width / 2;
+          const eyeCenterY = rect.top + rect.height / 2;
+
+          const deltaX = e.clientX - eyeCenterX;
+          const deltaY = e.clientY - eyeCenterY;
+
+          const angle = Math.atan2(deltaY, deltaX);
+          const distance = Math.min(Math.hypot(deltaX, deltaY), 14); // Max displacement 14px
+
+          const pupilX = Math.cos(angle) * distance;
+          const pupilY = Math.sin(angle) * distance;
+
+          pupils[index].style.transform = `translate(${pupilX}px, ${pupilY}px)`;
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

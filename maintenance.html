@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Website Maintenance Mode">
+  <title>Under Maintenance | Academic Portfolio</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/favicon/favicon-96x96.png?v=20260817" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="images/favicon/favicon.svg?v=20260817" />
+  <link rel="shortcut icon" href="images/favicon/favicon.ico?v=20260817" />
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png?v=20260817" />
+  <meta name="apple-mobile-web-app-title" content="Academic Portfolio" />
+  <link rel="manifest" href="images/favicon/site.webmanifest?v=20260817" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Application Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* Maintenance Page Specific Styling */
+    .maintenance-wrapper {
+      min-height: calc(100vh - var(--nav-height) - 70px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+    }
+
+    .maintenance-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      padding: 3.5rem 2.5rem;
+      max-width: 620px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .maintenance-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--warning), var(--primary));
+    }
+
+    .maintenance-icon-wrapper {
+      width: 88px;
+      height: 88px;
+      margin: 0 auto 1.5rem;
+      background: var(--bg-accent-subtle);
+      border: 2px solid var(--border-color);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.25rem;
+      color: var(--warning);
+      box-shadow: 0 0 24px rgba(245, 158, 11, 0.2);
+      position: relative;
+    }
+
+    .maintenance-icon-wrapper i {
+      animation: rotateWrench 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes rotateWrench {
+      0% { transform: rotate(-15deg); }
+      100% { transform: rotate(45deg); }
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--warning);
+      background-color: rgba(245, 158, 11, 0.12);
+      padding: 0.35rem 0.9rem;
+      border-radius: var(--radius-full);
+      margin-bottom: 1.25rem;
+      border: 1px solid rgba(245, 158, 11, 0.25);
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--warning);
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+      animation: pulseDot 1.8s infinite;
+    }
+
+    @keyframes pulseDot {
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+      }
+      70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 8px rgba(245, 158, 11, 0);
+      }
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
+      }
+    }
+
+    .maintenance-title {
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .maintenance-desc {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .contact-box {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      margin-bottom: 2rem;
+      font-size: 0.925rem;
+      color: var(--text-secondary);
+    }
+
+    .contact-box a {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .maintenance-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-action-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--primary);
+      color: #ffffff !important;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      transition: var(--transition);
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-action-primary:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-lg);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="site-header">
+    <div class="header-container">
+      <a href="index.html" class="site-brand">
+        <i class="fa-solid fa-graduation-cap" style="color: var(--primary);"></i>
+        <span>Academic Portfolio</span>
+      </a>
+
+      <div class="header-actions">
+        <button class="icon-btn" id="themeToggleBtn" title="Toggle Dark / Light Mode" aria-label="Toggle Theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Maintenance Main Content -->
+  <main class="maintenance-wrapper">
+    <div class="maintenance-card">
+      
+      <!-- Icon Graphic -->
+      <div class="maintenance-icon-wrapper">
+        <i class="fa-solid fa-screwdriver-wrench"></i>
+      </div>
+
+      <div class="status-badge">
+        <span class="pulse-dot"></span> Maintenance In Progress
+      </div>
+
+      <h1 class="maintenance-title">We'll Be Back Soon!</h1>
+      <p class="maintenance-desc">
+        This academic website is currently undergoing scheduled updates and improvements. Please check back shortly!
+      </p>
+
+      <div class="contact-box" id="contactBox" style="display: none;">
+        Need urgent contact? Reach out via email at <a id="contactEmail" href="#"></a>
+      </div>
+
+      <div class="maintenance-actions">
+        <button class="btn-action-primary" onclick="window.location.reload()">
+          <i class="fa-solid fa-rotate"></i> Refresh / Check Again
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Minimalist & Professional Copyright Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="copyright-text" id="footerCopyright">
+        &copy; 2026 Academic Portfolio. All rights reserved.
+      </div>
+      <div class="footer-custom-note" id="footerCustomNote" style="display:none;"></div>
+    </div>
+  </footer>
+
+  <script>
+    // Dark/Light Theme Switching
+    (function () {
+      const savedTheme = localStorage.getItem('theme') || 
+        (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      updateThemeIcon(savedTheme);
+
+      const themeBtn = document.getElementById('themeToggleBtn');
+      if (themeBtn) {
+        themeBtn.addEventListener('click', function () {
+          const current = document.documentElement.getAttribute('data-theme');
+          const next = current === 'dark' ? 'light' : 'dark';
+          document.documentElement.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+          updateThemeIcon(next);
+        });
+      }
+
+      function updateThemeIcon(theme) {
+        const icon = document.querySelector('#themeToggleBtn i');
+        if (icon) {
+          icon.className = theme === 'dark' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+        }
+      }
+    })();
+
+    // Dynamic Config Loader & Maintenance Check
+    (function () {
+      fetch('content/config.json')
+        .then(res => {
+          if (!res.ok) throw new Error('Failed to load config');
+          return res.json();
+        })
+        .then(config => {
+          // If maintenance mode is turned OFF in config.json, redirect visitors back to index.html
+          if (config.features && config.features.enableMaintenanceMode === false) {
+            window.location.replace('index.html');
+            return;
+          }
+
+          if (config.siteTitle) {
+            const brandSpan = document.querySelector('.site-brand span');
+            if (brandSpan) brandSpan.textContent = config.siteTitle;
+          }
+
+          // Populate contact box if author email exists
+          if (config.author && config.author.email) {
+            const contactBox = document.getElementById('contactBox');
+            const contactEmail = document.getElementById('contactEmail');
+            if (contactBox && contactEmail) {
+              contactEmail.textContent = config.author.email;
+              contactEmail.href = `mailto:${config.author.email}`;
+              contactBox.style.display = '';
+            }
+          }
+
+          // Footer rendering
+          const footerSection = document.querySelector('.site-footer');
+          const footerEl = document.getElementById('footerCopyright');
+          const footerEl2 = document.getElementById('footerCustomNote');
+
+          if (!config.footer) return;
+          const footer = config.footer;
+
+          if (footer.showCopyright === false) {
+            if (footerSection) footerSection.style.display = 'none';
+            return;
+          } else {
+            if (footerSection) footerSection.style.display = '';
+          }
+
+          if (footerEl) {
+            const year = new Date().getFullYear();
+            const authorName = (config.author && config.author.name) || 'Academic Portfolio';
+            footerEl.textContent = footer.copyrightText || `© ${year} ${authorName}. All rights reserved.`;
+          }
+
+          if (footerEl2) {
+            if (footer.customNote && footer.customNote.trim()) {
+              footerEl2.textContent = footer.customNote;
+              footerEl2.style.display = '';
+            } else {
+              footerEl2.style.display = 'none';
+            }
+          }
+        })
+        .catch(err => {
+          console.warn('Could not load config.json for maintenance page:', err);
+        });
+    })();
+  </script>
+</body>
+</html>

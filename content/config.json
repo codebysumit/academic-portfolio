@@ -113,6 +113,7 @@
     "enableCodeCopyButton": true,
     "enableDarkMode": true,
     "enableGlobalSearch": true,
-    "enableBibtexModal": true
+    "enableBibtexModal": true,
+    "enableMaintenanceMode": false
   }
 }

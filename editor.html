@@ -4,6 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Academic Content Studio - Visual Editor for Non-Coders</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/favicon/favicon-96x96.png?v=20260817" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="images/favicon/favicon.svg?v=20260817" />
+  <link rel="shortcut icon" href="images/favicon/favicon.ico?v=20260817" />
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png?v=20260817" />
+  <meta name="apple-mobile-web-app-title" content="Academic Portfolio" />
+  <link rel="manifest" href="images/favicon/site.webmanifest?v=20260817" />
   
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -381,6 +389,14 @@
           </div>
           <div class="form-group">
             <label class="form-label"><input type="checkbox" id="feat_bibtex" checked> BibTeX Modal</label>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group" style="grid-column: span 2;">
+            <label class="form-label" style="color: var(--danger, #ef4444); font-weight: 600;">
+              <input type="checkbox" id="feat_maintenance"> <i class="fa-solid fa-triangle-exclamation"></i> Enable Maintenance Mode (Redirects visitors to maintenance.html)
+            </label>
+            <div class="form-help">When enabled, visitors to your portfolio will be automatically redirected to your maintenance page.</div>
           </div>
         </div>
 
